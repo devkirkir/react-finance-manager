@@ -1,0 +1,26 @@
+{
+    "name": "react-redux-blog",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "concurrently \"vite\" \"json-server --watch db.json\"",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@reduxjs/toolkit": "^1.9.1",
+        "concurrently": "^7.6.0",
+        "json-server": "^0.17.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-redux": "^8.0.5"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.26",
+        "@types/react-dom": "^18.0.9",
+        "@vitejs/plugin-react": "^3.0.0",
+        "sass": "^1.57.1",
+        "vite": "^4.0.0"
+    }
+}

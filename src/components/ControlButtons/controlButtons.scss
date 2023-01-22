@@ -1,0 +1,31 @@
+.control-btns-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+
+    &__btn {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        font-size: 1.1rem;
+        background-color: $bg;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background 0.2s linear;
+
+        .icon {
+            margin-right: 6px;
+        }
+
+        &:hover {
+            background-color: $bgHover;
+        }
+
+        &:active {
+            background-color: $bgActive;
+        }
+    }
+}

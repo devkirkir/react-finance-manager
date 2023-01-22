@@ -1,0 +1,15 @@
+.cards-wrapper {
+    &__title {
+        @include title;
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .empty {
+            text-align: center;
+        }
+    }
+}

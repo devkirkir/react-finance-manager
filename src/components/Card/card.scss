@@ -1,0 +1,67 @@
+.card {
+    position: relative;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $text;
+    background-color: $bg;
+    padding: 20px 30px 15px;
+    border-radius: 3px;
+
+    &__type {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        width: 40px;
+    }
+
+    &__value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+
+        .dollar {
+            color: $bgActive;
+            font-size: 1.5rem;
+        }
+
+        .float {
+            color: $bgActive;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+    }
+
+    &__number {
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+
+    &__remove {
+        position: absolute;
+        right: 30px;
+        bottom: 15px;
+        opacity: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: opacity 0.2s linear;
+
+        svg {
+            path {
+                transition: fill 0.2s linear;
+            }
+        }
+
+        &:hover svg path {
+            fill: $red;
+        }
+    }
+
+    &:hover {
+        .card__remove {
+            opacity: 1;
+        }
+    }
+}
