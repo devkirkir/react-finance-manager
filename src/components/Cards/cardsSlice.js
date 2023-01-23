@@ -3,6 +3,7 @@ import {
     createEntityAdapter,
     createSlice,
 } from "@reduxjs/toolkit";
+
 import useHttp from "../../hooks/useHttp";
 
 const cardsAdapter = createEntityAdapter();
@@ -41,6 +42,8 @@ const cardsSlice = createSlice({
 });
 export const { removeCard } = cardsSlice.actions;
 
-export const { selectAll } = cardsAdapter.getSelectors((state) => state.cards);
+// export const { selectAll } = cardsAdapter.getSelectors((state) => state.cards);
+
+export const cardSelectors = cardsAdapter.getSelectors((state) => state.cards);
 
 export default cardsSlice.reducer;

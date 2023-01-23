@@ -1,30 +1,23 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchCards, removeCard, selectAll } from "./cardsSlice.js";
-import {
-    fetchBalance,
-    setCardsValue,
-    subtractCardValue,
-} from "../Balance/balanceSlice";
+import { fetchCards, removeCard, cardSelectors } from "./cardsSlice.js";
+import { setCardsValue, subtractCardValue } from "../Balance/balanceSlice";
+
+import useHttp from "../../hooks/useHttp.js";
 
 import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
 
-import store from "./../../store/index.js";
-
 import "./cards.scss";
-import useHttp from "../../hooks/useHttp.js";
-import { useRef } from "react";
 
 function Cards() {
     const dispatch = useDispatch();
     const { request } = useHttp();
 
-    const getAllCards = selectAll(store.getState());
-    let cards = [];
+    let getAllCards = useSelector(cardSelectors.selectAll);
 
-    const myRef = useRef();
+    const cardsRef = useRef();
 
     useEffect(() => {
         dispatch(fetchCards());
@@ -43,20 +36,19 @@ function Cards() {
         dispatch(setCardsValue(cardsTotalValue));
     };
 
-    const handleRemoveCard = (id, value) => {
-        myRef.current.style.height = myRef.current.clientHeight + "px";
+    const handleRemoveCard = (id, value, card) => {
+        cardsRef.current.style.height = cardsRef.current.clientHeight + "px";
 
         request(`http://localhost:3000/cards/${id}`, "DELETE")
             .then(dispatch(removeCard(id)))
             .then(dispatch(subtractCardValue(value)))
             .catch((err) => console.log("err: ", err));
 
-        myRef.current.style.height = myRef.current.clientHeight - 120 + "px";
+        cardsRef.current.style.height =
+            cardsRef.current.clientHeight - 120 + "px";
     };
 
-    const isLoading = useSelector((state) => state.cards.cardsLoading);
-
-    cards =
+    const cards =
         getAllCards.length !== 0 ? (
             getAllCards.map((item) => {
                 return (
@@ -71,12 +63,14 @@ function Cards() {
             <span className="empty">No cards</span>
         );
 
+    const isLoading = useSelector((state) => state.cards.cardsLoading);
+
     const content = isLoading == "idle" ? cards : <Loader />;
 
     return (
         <div className="cards-wrapper">
             <h3 className="cards-wrapper__title">Cards</h3>
-            <div className="cards" ref={myRef}>
+            <div className="cards" ref={cardsRef}>
                 {isLoading !== "rejected" ? content : "error"}
             </div>
         </div>

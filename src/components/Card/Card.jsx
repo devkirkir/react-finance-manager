@@ -1,4 +1,5 @@
-import React from "react";
+import { useRef } from "react";
+
 import useFormatNumber from "../../hooks/useFormatNumber";
 
 import "./card.scss";
@@ -10,8 +11,10 @@ function Card({ id, value, lastDigits, type, removeCard }) {
     const formattedValue = useFormatNumber(value.toFixed(2));
     let logo = type === "visa" ? visa : mastercard;
 
+    const cardRef = useRef();
+
     return (
-        <div className="card">
+        <div className="card" ref={cardRef}>
             <img className="card__type" src={logo} alt="system logo" />
 
             <span className="card__value">
@@ -24,7 +27,7 @@ function Card({ id, value, lastDigits, type, removeCard }) {
 
             <button
                 className="card__remove"
-                onClick={() => removeCard(id, value)}
+                onClick={() => removeCard(id, value, cardRef.current)}
             >
                 <svg
                     width="17"

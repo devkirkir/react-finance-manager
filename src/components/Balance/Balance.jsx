@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBalance, changeActiveType } from "./balanceSlice";
 
 import useFormatNumber from "../../hooks/useFormatNumber";
 
-import "./balance.scss";
 import BalanceToggles from "../BalanceToggles/BalanceToggles";
 import Loader from "../Loader/Loader";
+
+import "./balance.scss";
 
 function Balance() {
     const dispatch = useDispatch();

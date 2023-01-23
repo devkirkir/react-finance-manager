@@ -1,5 +1,3 @@
-import React from "react";
-
 function BalanceToggles({ changeType, activeType }) {
     const types = ["Total", "Cards", "Cash"];
     activeType =

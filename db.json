@@ -1,14 +1,14 @@
 {
     "balance": {
         "cash": 340,
-        "cards": 660
+        "cards": 0
     },
     "cards": [
         {
             "id": 4,
             "value": 100,
             "lastDigits": "5581",
-            "type": "mastercard"
+            "type": "visa"
         },
         {
             "id": 3,
