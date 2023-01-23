@@ -7,7 +7,7 @@ import visa from "../../assets/visa.png";
 import mastercard from "../../assets/mastercard.png";
 
 function Card({ id, value, lastDigits, type, removeCard }) {
-    value = useFormatNumber(value.toFixed(2));
+    const formattedValue = useFormatNumber(value.toFixed(2));
     let logo = type === "visa" ? visa : mastercard;
 
     return (
@@ -16,13 +16,16 @@ function Card({ id, value, lastDigits, type, removeCard }) {
 
             <span className="card__value">
                 <span className="dollar">$</span>
-                {value.number}
-                <span className="float">{value.float}</span>
+                {formattedValue.number}
+                <span className="float">{formattedValue.float}</span>
             </span>
 
             <span className="card__number">{`**** **** **** ${lastDigits}`}</span>
 
-            <button className="card__remove" onClick={() => removeCard(id)}>
+            <button
+                className="card__remove"
+                onClick={() => removeCard(id, value)}
+            >
                 <svg
                     width="17"
                     height="21"

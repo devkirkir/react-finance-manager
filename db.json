@@ -1,26 +1,26 @@
 {
-  "balance": {
-    "cash": 340,
-    "cards": 660
-  },
-  "cards": [
-    {
-      "id": 3,
-      "value": 200,
-      "lastDigits": "5581",
-      "type": "mastercard"
+    "balance": {
+        "cash": 340,
+        "cards": 660
     },
-    {
-      "id": 4,
-      "value": 100,
-      "lastDigits": "5581",
-      "type": "mastercard"
-    },
-    {
-      "id": 5,
-      "value": 200,
-      "lastDigits": "5581",
-      "type": "mastercard"
-    }
-  ]
+    "cards": [
+        {
+            "id": 4,
+            "value": 100,
+            "lastDigits": "5581",
+            "type": "mastercard"
+        },
+        {
+            "id": 3,
+            "value": 100,
+            "lastDigits": "5581",
+            "type": "mastercard"
+        },
+        {
+            "id": 5,
+            "value": 200,
+            "lastDigits": "5581",
+            "type": "mastercard"
+        }
+    ]
 }

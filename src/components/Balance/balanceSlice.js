@@ -23,6 +23,9 @@ const balanceSlice = createSlice({
         setCardsValue(state, action) {
             state.cards = action.payload;
         },
+        subtractCardValue(state, action) {
+            state.cards -= action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -40,6 +43,7 @@ const balanceSlice = createSlice({
     },
 });
 
-export const { changeActiveType, setCardsValue } = balanceSlice.actions;
+export const { changeActiveType, setCardsValue, subtractCardValue } =
+    balanceSlice.actions;
 
 export default balanceSlice.reducer;

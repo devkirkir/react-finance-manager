@@ -2,7 +2,11 @@ import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCards, removeCard, selectAll } from "./cardsSlice.js";
-import { fetchBalance, setCardsValue } from "../Balance/balanceSlice";
+import {
+    fetchBalance,
+    setCardsValue,
+    subtractCardValue,
+} from "../Balance/balanceSlice";
 
 import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
@@ -39,12 +43,13 @@ function Cards() {
         dispatch(setCardsValue(cardsTotalValue));
     };
 
-    const handleRemoveCard = (id) => {
+    const handleRemoveCard = (id, value) => {
         myRef.current.style.height = myRef.current.clientHeight + "px";
 
-        request(`http://localhost:3000/cards/${id}`, "DELETE").then(
-            dispatch(removeCard(id)).then(dispatch(fetchCards()))
-        );
+        request(`http://localhost:3000/cards/${id}`, "DELETE")
+            .then(dispatch(removeCard(id)))
+            .then(dispatch(subtractCardValue(value)))
+            .catch((err) => console.log("err: ", err));
 
         myRef.current.style.height = myRef.current.clientHeight - 120 + "px";
     };
