@@ -1,0 +1,27 @@
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    input,
+    select {
+        border: none;
+        text-align: center;
+        outline: none;
+        padding: 10px 0;
+    }
+
+    .input-balance {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .inputs-row {
+        display: flex;
+
+        input,
+        select {
+            flex: 1;
+        }
+    }
+}

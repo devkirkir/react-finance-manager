@@ -1,3 +1,5 @@
+import "./balanceToggles.scss";
+
 function BalanceToggles({ changeType, activeType }) {
     const types = ["Total", "Cards", "Cash"];
     activeType =

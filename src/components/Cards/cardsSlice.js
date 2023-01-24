@@ -17,6 +17,19 @@ export const fetchCards = createAsyncThunk("cards/fetchCards", () => {
     return request("http://localhost:3000/cards");
 });
 
+export const addCard = createAsyncThunk("cards/addCard", (body) => {
+    const { request } = useHttp();
+
+    console.log(JSON.stringify(body));
+
+    return request(
+        "http://localhost:3000/cards",
+        "POST",
+        { "Content-Type": "application/json" },
+        JSON.stringify(body)
+    );
+});
+
 const cardsSlice = createSlice({
     name: "cards",
     initialState,
@@ -36,6 +49,15 @@ const cardsSlice = createSlice({
             })
             .addCase(fetchCards.rejected, (state) => {
                 state.cardsLoading = "rejected";
+            })
+            .addCase(addCard.pending, (state) => {
+                console.log("pending");
+            })
+            .addCase(addCard.fulfilled, (state) => {
+                console.log("fulfilled");
+            })
+            .addCase(addCard.rejected, (state) => {
+                console.log("rejected");
             })
             .addDefaultCase(() => {});
     },

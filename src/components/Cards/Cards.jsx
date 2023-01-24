@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCards, removeCard, cardSelectors } from "./cardsSlice.js";
@@ -9,6 +9,7 @@ import useHttp from "../../hooks/useHttp.js";
 import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
 import Modal from "../Modal/Modal.jsx";
+import ModalAddCardView from "../Modal/ModalAddCardView/ModalAddCardView.jsx";
 
 import "./cards.scss";
 
@@ -21,6 +22,8 @@ function Cards() {
     const getAllCards = useSelector(cardSelectors.selectAll);
     const isLoading = useSelector((state) => state.cards.cardsLoading);
 
+    const [isModalOpen, setModalOpen] = useState(false);
+
     useEffect(() => {
         dispatch(fetchCards());
     }, []);
@@ -28,18 +31,6 @@ function Cards() {
     useEffect(() => {
         accumulateCardsBalance();
     }, [request]);
-
-    const renderCards = () => {
-        return getAllCards.map((item) => {
-            return (
-                <Card
-                    key={`card${item.id}`}
-                    {...item}
-                    removeCard={handleRemoveCard}
-                />
-            );
-        });
-    };
 
     const accumulateCardsBalance = () => {
         let cardsTotalValue = getAllCards.reduce(
@@ -64,9 +55,21 @@ function Cards() {
             cardsRef.current.clientHeight - 120 + "px";
     };
 
+    const renderCards = useMemo(() => {
+        return getAllCards.map((item) => {
+            return (
+                <Card
+                    key={`card${item.id}`}
+                    {...item}
+                    removeCard={handleRemoveCard}
+                />
+            );
+        });
+    }, [getAllCards]);
+
     const cards =
         getAllCards.length !== 0 ? (
-            renderCards()
+            renderCards
         ) : (
             <span className="empty">No cards</span>
         );
@@ -79,7 +82,11 @@ function Cards() {
         <div className="cards-wrapper">
             <div className="wrapper-header">
                 <h3 className="wrapper-header__title">Cards</h3>
-                <button className="wrapper-header__add">
+
+                <button
+                    className="wrapper-header__add"
+                    onClick={() => setModalOpen((isModalOpen) => !isModalOpen)}
+                >
                     <svg
                         width="26"
                         height="26"
@@ -111,13 +118,14 @@ function Cards() {
                 {loading}
                 {content}
             </div>
-            {/* <Modal></Modal> */}
+
+            {isModalOpen && (
+                <Modal>
+                    <ModalAddCardView setModalOpen={setModalOpen} />
+                </Modal>
+            )}
         </div>
     );
 }
-
-const modalAddCardView = () => {
-    return <></>;
-};
 
 export default Cards;

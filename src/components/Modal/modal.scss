@@ -1,4 +1,4 @@
-.modal-wrapper {
+.modal-overlay {
     display: grid;
     position: fixed;
     top: 0;
@@ -8,12 +8,38 @@
     background-color: rgba(0, 0, 0, 0.6);
     margin: auto;
 
-    .modal-content {
+    .modal {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 380px;
-        height: 180px;
+        height: auto;
         place-self: center;
         background-color: #fff;
         padding: 20px;
         border-radius: 3px;
+
+        .modal-btns {
+            display: flex;
+            gap: 15px;
+
+            &__btn {
+                flex: 1;
+                background: $bg;
+                border: none;
+                border-radius: 3px;
+                padding: 10px 0;
+                cursor: pointer;
+                transition: background 0.2s linear;
+
+                &:hover {
+                    background-color: $bgHover;
+                }
+
+                &:active {
+                    background-color: $bgActive;
+                }
+            }
+        }
     }
 }

@@ -35,30 +35,5 @@
                 font-weight: 700;
             }
         }
-
-        .control-btns {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-
-            &__btn {
-                flex: 1;
-                gap: 5px;
-                font-weight: 300;
-                background-color: transparent;
-                border: none;
-                border-radius: 3px;
-                padding: 7px 0;
-                transition: 0.2s linear;
-
-                &--active {
-                    background-color: $bgActive;
-                }
-
-                &:hover {
-                    background-color: $bgHover;
-                }
-            }
-        }
     }
 }

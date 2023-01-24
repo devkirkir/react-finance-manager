@@ -3,8 +3,8 @@ import "./modal.scss";
 
 function Modal({ children }) {
     return createPortal(
-        <div className="modal-wrapper">
-            <div className="modal-content">{children}</div>
+        <div className="modal-overlay">
+            <div className="modal">{children}</div>
         </div>,
         document.getElementById("modal")
     );
