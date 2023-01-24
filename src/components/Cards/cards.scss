@@ -1,6 +1,17 @@
 .cards-wrapper {
-    &__title {
-        @include title;
+    .wrapper-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+
+        &__title {
+            @include title;
+            margin-right: 10px;
+        }
+
+        &__add {
+            @include addBtn;
+        }
     }
 
     .cards {

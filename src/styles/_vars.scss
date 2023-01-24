@@ -10,5 +10,19 @@ $red: #fc3030;
 
 @mixin title {
     font-size: 2rem;
-    margin-bottom: 30px;
+}
+
+@mixin addBtn {
+    background: transparent;
+    border: none;
+    margin-bottom: -3px;
+    cursor: pointer;
+
+    svg circle {
+        transition: 0.2s linear;
+    }
+
+    &:hover svg circle {
+        fill: $bgHover;
+    }
 }

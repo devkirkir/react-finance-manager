@@ -20,6 +20,29 @@
             margin-right: 6px;
         }
 
+        span {
+            &::before {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                margin-right: 6px;
+            }
+        }
+
+        .income {
+            &::before {
+                content: "";
+                background: url("../../assets/icon-plus.svg") center no-repeat;
+            }
+        }
+
+        .expense {
+            &::before {
+                content: "";
+                background: url("../../assets/icon-minus.svg") center no-repeat;
+            }
+        }
+
         &:hover {
             background-color: $bgHover;
         }
