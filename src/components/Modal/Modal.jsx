@@ -6,7 +6,7 @@ function Modal({ children }) {
         <div className="modal-overlay">
             <div className="modal">{children}</div>
         </div>,
-        document.getElementById("modal")
+        document.getElementById("modal-container")
     );
 }
 

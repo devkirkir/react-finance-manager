@@ -1,26 +1,7 @@
 {
-    "balance": {
-        "cash": 340,
-        "cards": 0
-    },
-    "cards": [
-        {
-            "id": 3,
-            "value": 100,
-            "lastDigits": "5581",
-            "type": "mastercard"
-        },
-        {
-            "id": 5,
-            "value": 200,
-            "lastDigits": "5581",
-            "type": "mastercard"
-        },
-        {
-            "id": 2,
-            "value": 200,
-            "lastDigits": "5581",
-            "type": "mastercard"
-        }
-    ]
+  "balance": {
+    "cash": 340,
+    "cards": 0
+  },
+  "cards": []
 }

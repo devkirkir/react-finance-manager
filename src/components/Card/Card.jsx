@@ -7,9 +7,11 @@ import "./card.scss";
 import visa from "../../assets/visa.png";
 import mastercard from "../../assets/mastercard.png";
 
-function Card({ id, value, lastDigits, type, removeCard }) {
+function Card({ id, value, lastNumbers, cardType, removeCard }) {
+    value = +value;
+
     const formattedValue = useFormatNumber(value.toFixed(2));
-    let logo = type === "visa" ? visa : mastercard;
+    let logo = cardType === "visa" ? visa : mastercard;
 
     const cardRef = useRef();
 
@@ -23,7 +25,7 @@ function Card({ id, value, lastDigits, type, removeCard }) {
                 <span className="float">{formattedValue.float}</span>
             </span>
 
-            <span className="card__number">{`**** **** **** ${lastDigits}`}</span>
+            <span className="card__number">{`**** **** **** ${lastNumbers}`}</span>
 
             <button
                 className="card__remove"

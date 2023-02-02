@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCards, removeCard, cardSelectors } from "./cardsSlice.js";
@@ -17,8 +17,6 @@ function Cards() {
     const dispatch = useDispatch();
     const { request } = useHttp();
 
-    const cardsRef = useRef();
-
     const getAllCards = useSelector(cardSelectors.selectAll);
     const isLoading = useSelector((state) => state.cards.cardsLoading);
 
@@ -34,7 +32,7 @@ function Cards() {
 
     const accumulateCardsBalance = () => {
         let cardsTotalValue = getAllCards.reduce(
-            (accumulator, current) => accumulator + current.value,
+            (accumulator, current) => accumulator + +current.value,
             0
         );
 
@@ -42,17 +40,12 @@ function Cards() {
     };
 
     const handleRemoveCard = (id, value, card) => {
-        cardsRef.current.style.height = cardsRef.current.clientHeight + "px";
-
         request(`http://localhost:3000/cards/${id}`, "DELETE")
             .then(dispatch(removeCard(id)))
             .then(dispatch(subtractCardValue(value)))
             .catch((err) => {
                 throw new Error(err);
             });
-
-        cardsRef.current.style.height =
-            cardsRef.current.clientHeight - 120 + "px";
     };
 
     const renderCards = useMemo(() => {
@@ -113,7 +106,7 @@ function Cards() {
                     </svg>
                 </button>
             </div>
-            <div className="cards" ref={cardsRef}>
+            <div className="cards">
                 {error}
                 {loading}
                 {content}

@@ -20,8 +20,6 @@ export const fetchCards = createAsyncThunk("cards/fetchCards", () => {
 export const addCard = createAsyncThunk("cards/addCard", (body) => {
     const { request } = useHttp();
 
-    console.log(JSON.stringify(body));
-
     return request(
         "http://localhost:3000/cards",
         "POST",
@@ -53,7 +51,8 @@ const cardsSlice = createSlice({
             .addCase(addCard.pending, (state) => {
                 console.log("pending");
             })
-            .addCase(addCard.fulfilled, (state) => {
+            .addCase(addCard.fulfilled, (state, action) => {
+                cardsAdapter.addOne(state, action.payload);
                 console.log("fulfilled");
             })
             .addCase(addCard.rejected, (state) => {

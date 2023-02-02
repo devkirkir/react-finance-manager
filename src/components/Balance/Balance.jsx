@@ -32,18 +32,20 @@ function Balance() {
         total: useFormatNumber((balance.cards + balance.cash).toFixed(2)),
     };
 
+    const error = balance.balanceLoading === "rejected" ? "error" : null;
+    const loading = balance.balanceLoading === "pending" ? <Loader /> : null;
     const content =
-        balance.balanceLoading == "idle" ? (
+        balance.balanceLoading === "idle" ? (
             <View data={data} balance={balance} changeType={changeType} />
-        ) : (
-            <Loader />
-        );
+        ) : null;
 
     return (
         <div className="balance-wrapper">
             <h3 className="balance-wrapper__title">Balance</h3>
             <div className="balance">
-                {balance.balanceLoading !== "rejected" ? content : "error"}
+                {error}
+                {loading}
+                {content}
             </div>
         </div>
     );
