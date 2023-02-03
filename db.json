@@ -3,5 +3,18 @@
     "cash": 340,
     "cards": 0
   },
-  "cards": []
+  "cards": [
+    {
+      "id": "Q2NmZ_HQHBbCREhK7N6Fg",
+      "value": "100",
+      "lastNumbers": "1234",
+      "cardType": "mastercard"
+    },
+    {
+      "id": "PVzo09mun0fzD14KCTvIU",
+      "value": "60.10",
+      "lastNumbers": "2222",
+      "cardType": "visa"
+    }
+  ]
 }

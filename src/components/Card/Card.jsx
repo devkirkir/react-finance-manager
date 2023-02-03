@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import PropTypes from "prop-types";
 
 import useFormatNumber from "../../hooks/useFormatNumber";
 
@@ -59,5 +60,13 @@ function Card({ id, value, lastNumbers, cardType, removeCard }) {
         </div>
     );
 }
+
+Card.propTypes = {
+    id: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    lastNumbers: PropTypes.string.isRequired,
+    cardType: PropTypes.string.isRequired,
+    removeCard: PropTypes.func,
+};
 
 export default Card;

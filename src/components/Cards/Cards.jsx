@@ -9,9 +9,10 @@ import useHttp from "../../hooks/useHttp.js";
 import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
 import Modal from "../Modal/Modal.jsx";
-import ModalAddCardView from "../Modal/ModalAddCardView/ModalAddCardView.jsx";
+import ModalAddCard from "../Modal/ModalAddCard/ModalAddCard.jsx";
 
 import "./cards.scss";
+import ModalError from "../Modal/ModalError/ModalError.jsx";
 
 function Cards() {
     const dispatch = useDispatch();
@@ -19,8 +20,10 @@ function Cards() {
 
     const getAllCards = useSelector(cardSelectors.selectAll);
     const isLoading = useSelector((state) => state.cards.cardsLoading);
+    const cardsLimit = useSelector((state) => state.cards.cardsLimit);
 
-    const [isModalOpen, setModalOpen] = useState(false);
+    const [isCardModalOpen, setCardModalOpen] = useState(false);
+    const [isErrorModalOpen, setErrorModalOpen] = useState(false);
 
     useEffect(() => {
         dispatch(fetchCards());
@@ -78,7 +81,15 @@ function Cards() {
 
                 <button
                     className="wrapper-header__add"
-                    onClick={() => setModalOpen((isModalOpen) => !isModalOpen)}
+                    onClick={() => {
+                        getAllCards.length < cardsLimit
+                            ? setCardModalOpen(
+                                  (isCardModalOpen) => !isCardModalOpen
+                              )
+                            : setErrorModalOpen(
+                                  (isErrorModalOpen) => !isErrorModalOpen
+                              );
+                    }}
                 >
                     <svg
                         width="26"
@@ -112,9 +123,17 @@ function Cards() {
                 {content}
             </div>
 
-            {isModalOpen && (
+            {isCardModalOpen && (
                 <Modal>
-                    <ModalAddCardView setModalOpen={setModalOpen} />
+                    <ModalAddCard setCardModalOpen={setCardModalOpen} />
+                </Modal>
+            )}
+
+            {isErrorModalOpen && (
+                <Modal>
+                    <ModalError setErrorModalOpen={setErrorModalOpen}>
+                        Bro, max limit 3 cards :c
+                    </ModalError>
                 </Modal>
             )}
         </div>

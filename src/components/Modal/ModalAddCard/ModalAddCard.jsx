@@ -3,6 +3,8 @@ import { useReducer } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
+import PropTypes from "prop-types";
+
 import { addCard } from "./../../Cards/cardsSlice.js";
 
 import useFormatNumber from "../../../hooks/useFormatNumber.js";
@@ -10,7 +12,7 @@ import useFormatNumber from "../../../hooks/useFormatNumber.js";
 import visa from "../../../assets/visa.png";
 import mastercard from "../../../assets/mastercard.png";
 
-import "./modalAddCardView.scss";
+import "./modalAddCard.scss";
 
 const initialState = {
     data: {
@@ -78,7 +80,7 @@ function reducer(state, action) {
     }
 }
 
-function ModalAddCardView({ setModalOpen }) {
+function ModalAddCardView({ setCardModalOpen }) {
     const reduxDispatch = useDispatch();
 
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -103,7 +105,7 @@ function ModalAddCardView({ setModalOpen }) {
     const handleNextBtnClick = () => {
         if (state.index === views.length - 1) {
             addCards();
-            setModalOpen(false);
+            setCardModalOpen(false);
             return;
         }
 
@@ -175,7 +177,7 @@ function ModalAddCardView({ setModalOpen }) {
                 </button>
                 <button
                     className="modal-btns__btn"
-                    onClick={() => setModalOpen(false)}
+                    onClick={() => setCardModalOpen(false)}
                 >
                     Close
                 </button>
@@ -211,6 +213,12 @@ function BalanceInput({ dispatch, value, error }) {
         </>
     );
 }
+
+BalanceInput.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+    error: PropTypes.string,
+};
 
 function LastNumbersInput({ dispatch, value, error }) {
     const formattedValue = (value) => {
@@ -262,7 +270,13 @@ function LastNumbersInput({ dispatch, value, error }) {
     );
 }
 
-function CardTypeSelect({ dispatch, value }) {
+LastNumbersInput.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+    error: PropTypes.string,
+};
+
+function CardTypeSelect({ dispatch }) {
     return (
         <select
             className="input-balance"
@@ -302,5 +316,11 @@ function ConfirmCard({ value, lastNumbers, cardType }) {
         </>
     );
 }
+
+ConfirmCard.propTypes = {
+    value: PropTypes.string.isRequired,
+    lastNumbers: PropTypes.string.isRequired,
+    cardType: PropTypes.string.isRequired,
+};
 
 export default ModalAddCardView;

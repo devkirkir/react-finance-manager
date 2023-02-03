@@ -9,6 +9,7 @@ import useHttp from "../../hooks/useHttp";
 const cardsAdapter = createEntityAdapter();
 const initialState = cardsAdapter.getInitialState({
     cardsLoading: "pending",
+    cardsLimit: 3,
 });
 
 export const fetchCards = createAsyncThunk("cards/fetchCards", () => {
@@ -49,14 +50,14 @@ const cardsSlice = createSlice({
                 state.cardsLoading = "rejected";
             })
             .addCase(addCard.pending, (state) => {
-                console.log("pending");
+                state.cardsLoading = "pending";
             })
             .addCase(addCard.fulfilled, (state, action) => {
                 cardsAdapter.addOne(state, action.payload);
-                console.log("fulfilled");
+                state.cardsLoading = "idle";
             })
             .addCase(addCard.rejected, (state) => {
-                console.log("rejected");
+                state.cardsLoading = "rejected";
             })
             .addDefaultCase(() => {});
     },
