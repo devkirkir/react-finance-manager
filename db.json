@@ -1,20 +1,34 @@
 {
-  "balance": {
-    "cash": 340,
-    "cards": 0
-  },
-  "cards": [
-    {
-      "id": "Q2NmZ_HQHBbCREhK7N6Fg",
-      "value": "100",
-      "lastNumbers": "1234",
-      "cardType": "mastercard"
+    "balance": {
+        "cash": 340,
+        "cards": 0
     },
-    {
-      "id": "PVzo09mun0fzD14KCTvIU",
-      "value": "60.10",
-      "lastNumbers": "2222",
-      "cardType": "visa"
-    }
-  ]
+    "cards": [
+        {
+            "id": "gqtlOvFAhEYxBF6T_A3yf",
+            "value": "1222",
+            "lastNumbers": "1111",
+            "cardType": "mastercard"
+        },
+        {
+            "id": "qJBW6LlbU1ch4xjf3jVTW",
+            "value": "12",
+            "lastNumbers": "1111",
+            "cardType": "visa"
+        },
+        {
+            "id": "EDVjDm-3o_QQLZi-htBxD",
+            "value": "122",
+            "lastNumbers": "2222",
+            "cardType": "visa"
+        }
+    ],
+    "goals": [
+        {
+            "id": "14fds",
+            "title": "iMac",
+            "value": "1780",
+            "need": "5000"
+        }
+    ]
 }

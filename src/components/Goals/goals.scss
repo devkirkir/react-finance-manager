@@ -1,4 +1,4 @@
-.cards-wrapper {
+.goals-wrapper {
     .wrapper-header {
         display: flex;
         align-items: center;
@@ -12,16 +12,6 @@
 
         &__add {
             @include addBtn;
-        }
-    }
-
-    .cards {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-
-        .empty {
-            text-align: center;
         }
     }
 }

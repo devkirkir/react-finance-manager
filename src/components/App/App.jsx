@@ -1,6 +1,7 @@
 import Balance from "../Balance/Balance";
 import Cards from "../Cards/Cards";
 import ControlButtons from "../ControlButtons/ControlButtons";
+import Goals from "../Goals/Goals";
 
 import "./App.scss";
 
@@ -12,7 +13,9 @@ function App() {
                 <ControlButtons />
                 <Cards />
             </div>
-            <div className="right-column"></div>
+            <div className="right-column">
+                <Goals />
+            </div>
         </div>
     );
 }

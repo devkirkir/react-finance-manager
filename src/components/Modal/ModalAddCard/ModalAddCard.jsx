@@ -305,10 +305,10 @@ function ConfirmCard({ value, lastNumbers, cardType }) {
             <div className="card confirm-card">
                 <img className="card__type" src={logo} alt="system logo" />
 
-                <span className="card__value">
-                    <span className="dollar">$</span>
-                    {formattedValue.number}
-                    <span className="float">{formattedValue.float}</span>
+                <span className="value">
+                    <span className="value__dollar">$</span>
+                    <span className="value__int">{formattedValue.number}</span>
+                    <span className="value__float">{formattedValue.float}</span>
                 </span>
 
                 <span className="card__number">{`**** **** **** ${lastNumbers}`}</span>

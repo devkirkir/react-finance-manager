@@ -16,20 +16,22 @@
         width: 40px;
     }
 
-    &__value {
-        font-size: 2.5rem;
+    .value {
         font-weight: 700;
         margin-bottom: 15px;
 
-        .dollar {
+        &__dollar {
             color: $bgActive;
             font-size: 1.5rem;
         }
 
-        .float {
+        &__int {
+            font-size: 2.5rem;
+        }
+
+        &__float {
             color: $bgActive;
             font-size: 2.5rem;
-            font-weight: 700;
         }
     }
 

@@ -1,0 +1,67 @@
+.goal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 180px;
+    background-color: $bg;
+    padding: 20px 20px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &__title {
+        font-size: 1.5rem;
+    }
+
+    .value {
+        font-weight: 700;
+
+        &__dollar {
+            font-size: 1.5rem;
+            color: $bgActive;
+        }
+
+        &__int {
+            font-size: 2.2rem;
+        }
+
+        &__float {
+            font-size: 2.2rem;
+            color: $bgActive;
+        }
+    }
+
+    .progress {
+        .bar {
+            width: 100%;
+            height: 15px;
+            background-color: $bgHover;
+            border-radius: 3px;
+            margin-bottom: 5px;
+
+            &__inner {
+                height: 100%;
+                background-color: $text;
+                border-radius: 3px;
+
+                .percentage {
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+        .count {
+            display: flex;
+            justify-content: space-between;
+
+            &__need,
+            &__start {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
