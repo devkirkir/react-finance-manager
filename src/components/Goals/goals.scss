@@ -14,4 +14,9 @@
             @include addBtn;
         }
     }
+
+    .goals {
+        display: flex;
+        gap: 20px;
+    }
 }

@@ -13,9 +13,20 @@ export const fetchGoals = createAsyncThunk("goals/fetchGoals", () => {
     return request("http://localhost:3000/goals");
 });
 
+export const addGoal = createAsyncThunk("goals/addGoal", (body) => {
+    const { request } = useHttp();
+
+    return request("http://localhost:3000/goals", "POST", { "Content-Type": "application/json" }, JSON.stringify(body));
+});
+
 const goalsSlice = createSlice({
     name: "goals",
     initialState,
+    reducers: {
+        removeGoal(state, action) {
+            goalsAdapter.removeOne(state, action.payload);
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchGoals.pending, (state) => {
@@ -28,9 +39,21 @@ const goalsSlice = createSlice({
             .addCase(fetchGoals.rejected, (state) => {
                 state.goalsLoading = "rejected";
             })
+            .addCase(addGoal.pending, (state) => {
+                state.goalsLoading = "pending";
+            })
+            .addCase(addGoal.fulfilled, (state, action) => {
+                goalsAdapter.addOne(state, action.payload);
+                state.goalsLoading = "idle";
+            })
+            .addCase(addGoal.rejected, (state) => {
+                state.goalsLoading = "rejected";
+            })
             .addDefaultCase(() => {});
     },
 });
+
+export const { removeGoal } = goalsSlice.actions;
 
 export const goalsSelectors = goalsAdapter.getSelectors((state) => state.goals);
 

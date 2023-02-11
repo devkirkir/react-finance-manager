@@ -97,9 +97,7 @@ function ModalAddCardView({ setCardModalOpen }) {
     };
 
     const setCurrentValue = (data, stateIndex) => {
-        return Object.values(data).filter((item, index) =>
-            index === stateIndex ? item : ""
-        )[0];
+        return Object.values(data).filter((item, index) => (index === stateIndex ? item : ""))[0];
     };
 
     const handleNextBtnClick = () => {
@@ -136,22 +134,10 @@ function ModalAddCardView({ setCardModalOpen }) {
     };
 
     const views = [
-        <BalanceInput
-            dispatch={dispatch}
-            value={state.data.balance}
-            error={state.errorLabel}
-        />,
-        <LastNumbersInput
-            dispatch={dispatch}
-            value={state.data.lastNumbers}
-            error={state.errorLabel}
-        />,
+        <BalanceInput dispatch={dispatch} value={state.data.balance} error={state.errorLabel} />,
+        <LastNumbersInput dispatch={dispatch} value={state.data.lastNumbers} error={state.errorLabel} />,
         <CardTypeSelect dispatch={dispatch} value={state.data.cardType} />,
-        <ConfirmCard
-            value={state.data.balance}
-            cardType={state.data.cardType}
-            lastNumbers={state.data.lastNumbers}
-        />,
+        <ConfirmCard value={state.data.balance} cardType={state.data.cardType} lastNumbers={state.data.lastNumbers} />,
     ];
 
     let btnLabel = state.index !== views.length - 1 ? "Next" : "Done";
@@ -162,23 +148,13 @@ function ModalAddCardView({ setCardModalOpen }) {
             <div className="content">{views[state.index]}</div>
 
             <div className="modal-btns">
-                <button
-                    className="modal-btns__btn"
-                    onClick={() => handleNextBtnClick()}
-                    disabled={disabled}
-                >
+                <button className="modal-btns__btn" onClick={() => handleNextBtnClick()} disabled={disabled}>
                     {btnLabel}
                 </button>
-                <button
-                    className="modal-btns__btn"
-                    onClick={() => handleBackBtnClick()}
-                >
+                <button className="modal-btns__btn" onClick={() => handleBackBtnClick()}>
                     Back
                 </button>
-                <button
-                    className="modal-btns__btn"
-                    onClick={() => setCardModalOpen(false)}
-                >
+                <button className="modal-btns__btn" onClick={() => setCardModalOpen(false)}>
                     Close
                 </button>
             </div>
@@ -194,9 +170,9 @@ function BalanceInput({ dispatch, value, error }) {
     return (
         <>
             <input
-                className="input-balance"
                 type="number"
                 value={value}
+                className={error ? "input-balance invalid" : "input-balance"}
                 onChange={(event) => {
                     if (event.target.value.length > 0) {
                         dispatch({ type: "onError", payload: null });
@@ -251,7 +227,7 @@ function LastNumbersInput({ dispatch, value, error }) {
     return (
         <>
             <input
-                className="input-balance"
+                className={error ? "input-balance invalid" : "input-balance"}
                 type="number"
                 placeholder="Last 4 digit"
                 value={value}
@@ -300,7 +276,7 @@ function ConfirmCard({ value, lastNumbers, cardType }) {
 
     return (
         <>
-            <span className="confirm-label">Confirmation</span>
+            <span className="content__title">Confirmation</span>
 
             <div className="card confirm-card">
                 <img className="card__type" src={logo} alt="system logo" />

@@ -1,0 +1,29 @@
+.content {
+    &__title {
+        margin-bottom: 20px;
+    }
+
+    .form {
+        margin-bottom: 20px;
+        input {
+            font-size: 2rem;
+            border: none;
+            text-align: center;
+            outline: none;
+            padding: 6px 0;
+            margin-bottom: 10px;
+        }
+
+        .invalid {
+            background-color: rgba(255, 0, 0, 0.15);
+            border-radius: 3px;
+        }
+
+        &__error {
+            color: $red;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+    }
+}

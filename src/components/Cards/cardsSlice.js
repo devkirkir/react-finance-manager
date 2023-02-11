@@ -1,8 +1,4 @@
-import {
-    createAsyncThunk,
-    createEntityAdapter,
-    createSlice,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
 import useHttp from "../../hooks/useHttp";
 
@@ -21,12 +17,7 @@ export const fetchCards = createAsyncThunk("cards/fetchCards", () => {
 export const addCard = createAsyncThunk("cards/addCard", (body) => {
     const { request } = useHttp();
 
-    return request(
-        "http://localhost:3000/cards",
-        "POST",
-        { "Content-Type": "application/json" },
-        JSON.stringify(body)
-    );
+    return request("http://localhost:3000/cards", "POST", { "Content-Type": "application/json" }, JSON.stringify(body));
 });
 
 const cardsSlice = createSlice({
@@ -63,8 +54,6 @@ const cardsSlice = createSlice({
     },
 });
 export const { removeCard } = cardsSlice.actions;
-
-// export const { selectAll } = cardsAdapter.getSelectors((state) => state.cards);
 
 export const cardSelectors = cardsAdapter.getSelectors((state) => state.cards);
 
