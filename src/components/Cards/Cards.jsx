@@ -37,7 +37,7 @@ function Cards() {
         return getAllCards.reduce((accumulator, current) => accumulator + +current.value, 0);
     };
 
-    const handleRemoveCard = (id, value, card) => {
+    const handleRemoveCard = (id, value) => {
         request(`http://localhost:3000/cards/${id}`, "DELETE")
             .then(dispatch(removeCard(id)))
             .then(dispatch(subtractCardValue(value)))

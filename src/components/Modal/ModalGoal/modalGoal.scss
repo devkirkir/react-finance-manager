@@ -1,0 +1,31 @@
+.content {
+    .form-income {
+        .form-income-section {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+
+            label {
+                display: block;
+            }
+
+            &__left {
+                flex: 2;
+                background-color: red;
+
+                select {
+                    width: 100%;
+                }
+            }
+
+            &__right {
+                flex: 1;
+
+                input {
+                    width: 100%;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}

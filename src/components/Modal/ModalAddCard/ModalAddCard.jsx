@@ -276,7 +276,7 @@ function ConfirmCard({ value, lastNumbers, cardType }) {
 
     return (
         <>
-            <span className="content__title">Confirmation</span>
+            <h3 className="content__title">Confirmation</h3>
 
             <div className="card confirm-card">
                 <img className="card__type" src={logo} alt="system logo" />

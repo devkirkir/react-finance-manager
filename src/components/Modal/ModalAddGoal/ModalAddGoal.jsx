@@ -30,7 +30,7 @@ function ModalAddGoal({ setModalOpen }) {
     return (
         <>
             <div className="content">
-                <span className="content__title">Add New Goal</span>
+                <h3 className="content__title">Add New Goal</h3>
 
                 <form className="form">
                     <label htmlFor="goal-title">Title</label>
@@ -38,8 +38,8 @@ function ModalAddGoal({ setModalOpen }) {
                         {...register("goalTitle", {
                             required: "Input cannot be empty!",
                             maxLength: {
-                                value: 9,
-                                message: "Title must be less than 10 chars",
+                                value: 15,
+                                message: "Title must be less than 15 chars",
                             },
                         })}
                         className={errors.goalTitle ? "invalid" : null}

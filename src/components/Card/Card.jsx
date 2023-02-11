@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import PropTypes from "prop-types";
 
 import useFormatNumber from "../../hooks/useFormatNumber";
@@ -9,15 +8,11 @@ import visa from "../../assets/visa.png";
 import mastercard from "../../assets/mastercard.png";
 
 function Card({ id, value, lastNumbers, cardType, removeCard }) {
-    value = +value;
-
-    const formattedValue = useFormatNumber(value.toFixed(2));
-    let logo = cardType === "visa" ? visa : mastercard;
-
-    const cardRef = useRef();
+    const formattedValue = useFormatNumber((+value).toFixed(2));
+    const logo = cardType === "visa" ? visa : mastercard;
 
     return (
-        <div className="card" ref={cardRef}>
+        <div className="card">
             <img className="card__type" src={logo} alt="system logo" />
 
             <span className="value">

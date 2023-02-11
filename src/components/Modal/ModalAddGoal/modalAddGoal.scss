@@ -5,6 +5,12 @@
 
     .form {
         margin-bottom: 20px;
+
+        label {
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
         input {
             font-size: 2rem;
             border: none;

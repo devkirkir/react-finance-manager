@@ -35,7 +35,7 @@ function Goals() {
             });
     };
 
-    const renderGoals = () => getAllGoals.map((item) => <Goal key={`goal${item.id}`} removeGoal={handleRemoveGoal} {...item} />);
+    const renderGoals = () => getAllGoals.map((item) => <Goal key={`goal${item.id}`} {...item} />);
 
     const goals = useMemo(() => (getAllGoals.length !== 0 ? renderGoals() : <span className="empty">No goals</span>), [getAllGoals]);
 
