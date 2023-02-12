@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
@@ -145,7 +145,10 @@ function ModalAddCardView({ setCardModalOpen }) {
 
     return (
         <>
-            <div className="content">{views[state.index]}</div>
+            <div className="content">
+                <h3 className="content__title">Add Card </h3>
+                {views[state.index]}
+            </div>
 
             <div className="modal-btns">
                 <button className="modal-btns__btn" onClick={() => handleNextBtnClick()} disabled={disabled}>
@@ -170,9 +173,10 @@ function BalanceInput({ dispatch, value, error }) {
     return (
         <>
             <input
+                id="card-balance-input"
                 type="number"
                 value={value}
-                className={error ? "input-balance invalid" : "input-balance"}
+                className={error ? "input-form invalid" : "input-form"}
                 onChange={(event) => {
                     if (event.target.value.length > 0) {
                         dispatch({ type: "onError", payload: null });
@@ -227,7 +231,7 @@ function LastNumbersInput({ dispatch, value, error }) {
     return (
         <>
             <input
-                className={error ? "input-balance invalid" : "input-balance"}
+                className={error ? "input-form invalid" : "input-form"}
                 type="number"
                 placeholder="Last 4 digit"
                 value={value}
@@ -255,7 +259,7 @@ LastNumbersInput.propTypes = {
 function CardTypeSelect({ dispatch }) {
     return (
         <select
-            className="input-balance"
+            className="select-form"
             onChange={(event) =>
                 dispatch({
                     type: "onCardTypeChange",
@@ -270,14 +274,12 @@ function CardTypeSelect({ dispatch }) {
 }
 
 function ConfirmCard({ value, lastNumbers, cardType }) {
-    value = +value;
-    const formattedValue = useFormatNumber(value.toFixed(2));
-    const logo = cardType === "visa" ? visa : mastercard;
+    const formattedValue = useFormatNumber((+value).toFixed(2));
+
+    let logo = cardType.toLowerCase() === "visa" ? visa : mastercard;
 
     return (
         <>
-            <h3 className="content__title">Confirmation</h3>
-
             <div className="card confirm-card">
                 <img className="card__type" src={logo} alt="system logo" />
 

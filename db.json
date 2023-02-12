@@ -5,10 +5,16 @@
   },
   "cards": [
     {
-      "id": "gqtlOvFAhEYxBF6T_A3yf",
-      "value": "1222",
-      "lastNumbers": "1111",
-      "cardType": "mastercard"
+      "id": "6WjxXzVUvDcii4YwIiFPs",
+      "value": "1111",
+      "lastNumbers": "3333",
+      "cardType": "visa"
+    },
+    {
+      "id": "wruwplgT4onKA3Qr85ztj",
+      "value": "1111",
+      "lastNumbers": "2222",
+      "cardType": "visa"
     }
   ],
   "goals": [

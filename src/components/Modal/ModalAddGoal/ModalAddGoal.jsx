@@ -42,7 +42,7 @@ function ModalAddGoal({ setModalOpen }) {
                                 message: "Title must be less than 15 chars",
                             },
                         })}
-                        className={errors.goalTitle ? "invalid" : null}
+                        className={errors.goalTitle ? "input-form invalid" : "input-form"}
                         type="text"
                         id="goal-title"
                         placeholder="Title"
@@ -59,7 +59,7 @@ function ModalAddGoal({ setModalOpen }) {
                                 message: "Wrong value",
                             },
                         })}
-                        className={errors.goalNeed ? "invalid" : null}
+                        className={errors.goalNeed ? "input-form invalid" : "input-form"}
                         type="number"
                         id="goal-need"
                         placeholder="0.00$"
@@ -76,7 +76,7 @@ function ModalAddGoal({ setModalOpen }) {
                                 message: "Wrong value",
                             },
                         })}
-                        className={errors.goalHave ? "invalid" : null}
+                        className={errors.goalHave ? "input-form invalid" : "input-form"}
                         type="number"
                         id="goal-have"
                         placeholder="0.00$"

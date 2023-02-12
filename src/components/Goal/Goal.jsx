@@ -1,7 +1,12 @@
 import { useState } from "react";
+
 import useFormatNumber from "../../hooks/useFormatNumber";
+
+import { motion } from "framer-motion";
+
 import Modal from "../Modal/Modal";
 import ModalGoal from "../Modal/ModalGoal/ModalGoal";
+
 import "./goal.scss";
 
 function Goal(props) {
@@ -15,8 +20,15 @@ function Goal(props) {
     const percentWidth = percent <= 100 ? percent : "100%";
     const percentColor = percent > 5 ? "#fff" : "$text";
 
+    const animation = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+        },
+    };
+
     return (
-        <div className="goal" onClick={() => setGoalModalOpen(true)}>
+        <motion.div variants={animation} initial="hidden" animate="show" className="goal" onClick={() => setGoalModalOpen(true)}>
             <span className="goal__title">{title}</span>
 
             <span className="value">
@@ -47,7 +59,7 @@ function Goal(props) {
                     <ModalGoal {...props} setGoalModalOpen={setGoalModalOpen} />
                 </Modal>
             )}
-        </div>
+        </motion.div>
     );
 }
 

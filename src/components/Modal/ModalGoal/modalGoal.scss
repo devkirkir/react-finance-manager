@@ -1,5 +1,12 @@
 .content {
     .form-income {
+        .form__title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
         .form-income-section {
             display: flex;
             flex-direction: row;
@@ -9,11 +16,17 @@
                 display: block;
             }
 
+            input,
+            select {
+                height: 40px;
+                margin-bottom: 10px;
+            }
+
             &__left {
                 flex: 2;
-                background-color: red;
 
                 select {
+                    font-size: 1rem;
                     width: 100%;
                 }
             }

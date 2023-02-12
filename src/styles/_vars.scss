@@ -26,3 +26,14 @@ $red: #fc3030;
         fill: $bgHover;
     }
 }
+
+@mixin input {
+    font-size: 2rem;
+    text-align: center;
+    outline: none;
+    border: 1px solid $bgHover;
+    border-radius: 3px;
+    // border: none;
+    padding: 6px 0;
+    margin-bottom: 10px;
+}

@@ -1,34 +1,4 @@
 .content {
-    input,
-    select {
-        border: none;
-        text-align: center;
-        outline: none;
-        padding: 10px 0;
-    }
-
-    .input-balance {
-        font-size: 2rem;
-    }
-
-    .inputs-row {
-        display: flex;
-
-        input,
-        select {
-            flex: 1;
-        }
-    }
-
-    select {
-        margin-bottom: 28px;
-    }
-
-    .invalid {
-        background-color: rgba(255, 0, 0, 0.15);
-        border-radius: 3px;
-    }
-
     .error {
         color: $red;
         text-align: center;

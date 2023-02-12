@@ -4,26 +4,9 @@
     }
 
     .form {
+        display: flex;
+        flex-direction: column;
         margin-bottom: 20px;
-
-        label {
-            opacity: 0.8;
-            margin-bottom: 5px;
-        }
-
-        input {
-            font-size: 2rem;
-            border: none;
-            text-align: center;
-            outline: none;
-            padding: 6px 0;
-            margin-bottom: 10px;
-        }
-
-        .invalid {
-            background-color: rgba(255, 0, 0, 0.15);
-            border-radius: 3px;
-        }
 
         &__error {
             color: $red;
