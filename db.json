@@ -5,24 +5,10 @@
   },
   "cards": [
     {
-      "id": "6WjxXzVUvDcii4YwIiFPs",
-      "value": "1111",
-      "lastNumbers": "3333",
-      "cardType": "visa"
-    },
-    {
-      "id": "wruwplgT4onKA3Qr85ztj",
-      "value": "1111",
+      "id": "aECOOu5IivJ3ZwVe6frJ6",
+      "value": "1200",
       "lastNumbers": "2222",
       "cardType": "visa"
-    }
-  ],
-  "goals": [
-    {
-      "id": "14fds",
-      "title": "iMac",
-      "value": "1790",
-      "need": "5000"
     }
   ]
 }

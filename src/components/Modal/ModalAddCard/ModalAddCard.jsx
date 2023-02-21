@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useReducer } from "react";
 
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";

@@ -28,6 +28,7 @@
                 text-align: left;
                 font-weight: 700;
                 font-size: 1.5rem;
+                margin-bottom: 15px;
             }
         }
 
@@ -40,37 +41,9 @@
             margin-bottom: 28px;
         }
 
-        label {
-            opacity: 0.8;
-            margin-bottom: 5px;
-        }
-
         .invalid {
             background-color: rgba(255, 0, 0, 0.15);
             border-radius: 3px;
-        }
-
-        input[type="submit"] {
-            flex: 1;
-            font-size: 1rem;
-            background: $bg;
-            border: none;
-            border-radius: 3px;
-            padding: 10px 0;
-            cursor: pointer;
-            transition: background 0.2s linear;
-
-            &:disabled {
-                opacity: 0.5;
-            }
-
-            &:hover {
-                background-color: $bgHover;
-            }
-
-            &:active {
-                background-color: $bgActive;
-            }
         }
 
         .modal-btns {

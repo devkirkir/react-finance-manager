@@ -20,10 +20,10 @@ const balanceSlice = createSlice({
         changeActiveType(state, action) {
             state.activeType = action.payload;
         },
-        setCardsValue(state, action) {
+        setCardsBalance(state, action) {
             state.cards = action.payload;
         },
-        subtractCardValue(state, action) {
+        subtractCardBalance(state, action) {
             state.cards -= action.payload;
         },
     },
@@ -43,7 +43,6 @@ const balanceSlice = createSlice({
     },
 });
 
-export const { changeActiveType, setCardsValue, subtractCardValue } =
-    balanceSlice.actions;
+export const { changeActiveType, setCardsBalance, subtractCardBalance } = balanceSlice.actions;
 
 export default balanceSlice.reducer;

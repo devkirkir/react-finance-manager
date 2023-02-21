@@ -1,0 +1,44 @@
+.custom-select {
+    position: relative;
+    .custom-select-selected {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid $bgHover;
+        border-radius: 3px;
+        padding: 15px;
+        cursor: pointer;
+        transition: background 0.3s linear;
+
+        .custom-select-selected__value {
+            font-weight: 700;
+            color: $green;
+        }
+    }
+
+    .custom-select-dropdown {
+        position: absolute;
+        width: 100%;
+
+        .custom-select-dropdown__list {
+            border-radius: 3px;
+
+            .custom-select-dropdown-item {
+                display: flex;
+                justify-content: space-between;
+                border: 1px solid $bgHover;
+                padding: 15px;
+                background-color: #fff;
+                cursor: pointer;
+
+                &__value {
+                    font-weight: 700;
+                    color: $green;
+                }
+
+                &:hover {
+                    background-color: $bgHover;
+                }
+            }
+        }
+    }
+}

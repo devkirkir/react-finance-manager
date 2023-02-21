@@ -2,6 +2,8 @@ import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/too
 
 import useHttp from "../../hooks/useHttp";
 
+const { request } = useHttp();
+
 const cardsAdapter = createEntityAdapter();
 const initialState = cardsAdapter.getInitialState({
     cardsLoading: "pending",
@@ -9,14 +11,10 @@ const initialState = cardsAdapter.getInitialState({
 });
 
 export const fetchCards = createAsyncThunk("cards/fetchCards", () => {
-    const { request } = useHttp();
-
     return request("http://localhost:3000/cards");
 });
 
 export const addCard = createAsyncThunk("cards/addCard", (body) => {
-    const { request } = useHttp();
-
     return request("http://localhost:3000/cards", "POST", { "Content-Type": "application/json" }, JSON.stringify(body));
 });
 
@@ -40,6 +38,7 @@ const cardsSlice = createSlice({
             .addCase(fetchCards.rejected, (state) => {
                 state.cardsLoading = "rejected";
             })
+
             .addCase(addCard.pending, (state) => {
                 state.cardsLoading = "pending";
             })

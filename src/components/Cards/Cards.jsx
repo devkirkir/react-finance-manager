@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCards, removeCard, cardSelectors } from "./cardsSlice.js";
-import { setCardsValue, subtractCardValue } from "../Balance/balanceSlice";
+import { setCardsBalance, subtractCardBalance } from "../Balance/balanceSlice";
 
 import useHttp from "../../hooks/useHttp.js";
 
@@ -30,7 +30,7 @@ function Cards() {
     }, []);
 
     useEffect(() => {
-        dispatch(setCardsValue(accumulateCardsBalance()));
+        dispatch(setCardsBalance(accumulateCardsBalance()));
     }, [request]);
 
     const accumulateCardsBalance = () => {
@@ -40,7 +40,7 @@ function Cards() {
     const handleRemoveCard = (id, value) => {
         request(`http://localhost:3000/cards/${id}`, "DELETE")
             .then(dispatch(removeCard(id)))
-            .then(dispatch(subtractCardValue(value)))
+            .then(dispatch(subtractCardBalance(value)))
             .catch((err) => {
                 throw new Error(err);
             });
