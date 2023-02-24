@@ -1,7 +1,7 @@
 {
     "name": "react-redux-blog",
     "private": true,
-    "version": "0.7.3",
+    "version": "0.7.5",
     "type": "module",
     "scripts": {
         "dev": "concurrently \"vite\" \"json-server --watch db.json\"",

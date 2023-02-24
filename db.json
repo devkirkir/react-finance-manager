@@ -1,14 +1,21 @@
 {
-  "balance": {
-    "cash": 340,
-    "cards": 0
-  },
-  "cards": [
-    {
-      "id": "aECOOu5IivJ3ZwVe6frJ6",
-      "value": "1200",
-      "lastNumbers": "2222",
-      "cardType": "visa"
-    }
-  ]
+    "balance": {
+        "cash": 200,
+        "cards": 0
+    },
+    "cards": [
+        {
+            "id": "aECOOu5IivJ3ZwVe6frJ6",
+            "value": "500",
+            "lastNumbers": "2222",
+            "cardType": "visa"
+        },
+        {
+            "id": "qTAxi6LuDX1_-d2v4IUym",
+            "value": "200",
+            "lastNumbers": "2121",
+            "cardType": "mastercard"
+        }
+    ],
+    "history": []
 }

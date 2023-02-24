@@ -146,7 +146,7 @@ function ModalAddCardView({ setCardModalOpen }) {
     return (
         <>
             <div className="content">
-                <h3 className="content__title">Add Card </h3>
+                <h3 className="content__title">Add Card</h3>
                 {views[state.index]}
             </div>
 

@@ -7,10 +7,15 @@ const initialState = {
     activeType: "total",
 };
 
-export const fetchBalance = createAsyncThunk("balance/fetchBalance", () => {
-    const { request } = useHttp();
+const { request } = useHttp();
 
+export const fetchBalance = createAsyncThunk("balance/fetchBalance", () => {
     return request("http://localhost:3000/balance");
+});
+
+export const changeCashBalance = createAsyncThunk("balance/addCash", (value) => {
+    const obj = { cash: value };
+    return request("http://localhost:3000/balance", "PATCH", { "Content-Type": "application/json" }, JSON.stringify(obj));
 });
 
 const balanceSlice = createSlice({
@@ -37,6 +42,17 @@ const balanceSlice = createSlice({
                 state.balanceLoading = "idle";
             })
             .addCase(fetchBalance.rejected, (state) => {
+                state.balanceLoading = "rejected";
+            })
+
+            .addCase(changeCashBalance.pending, (state) => {
+                state.balanceLoading = "pending";
+            })
+            .addCase(changeCashBalance.fulfilled, (state, action) => {
+                state.cash = action.payload.cash;
+                state.balanceLoading = "idle";
+            })
+            .addCase(changeCashBalance.rejected, (state) => {
                 state.balanceLoading = "rejected";
             })
             .addDefaultCase(() => {});

@@ -18,6 +18,10 @@ export const addCard = createAsyncThunk("cards/addCard", (body) => {
     return request("http://localhost:3000/cards", "POST", { "Content-Type": "application/json" }, JSON.stringify(body));
 });
 
+export const changeCardBalance = createAsyncThunk("cards/addCardBalance", (data) => {
+    return request(`http://localhost:3000/cards/${data.id}`, "PATCH", { "Content-Type": "application/json" }, JSON.stringify(data.body));
+});
+
 const cardsSlice = createSlice({
     name: "cards",
     initialState,
@@ -47,6 +51,17 @@ const cardsSlice = createSlice({
                 state.cardsLoading = "idle";
             })
             .addCase(addCard.rejected, (state) => {
+                state.cardsLoading = "rejected";
+            })
+
+            .addCase(changeCardBalance.pending, (state) => {
+                state.cardsLoading = "pending";
+            })
+            .addCase(changeCardBalance.fulfilled, (state, action) => {
+                cardsAdapter.upsertOne(state, action.payload);
+                state.cardsLoading = "idle";
+            })
+            .addCase(changeCardBalance.rejected, (state) => {
                 state.cardsLoading = "rejected";
             })
             .addDefaultCase(() => {});

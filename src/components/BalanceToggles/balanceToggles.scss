@@ -14,7 +14,7 @@
         transition: 0.2s linear;
         cursor: pointer;
 
-        &--active {
+        &_active {
             background-color: $bgHover;
         }
 

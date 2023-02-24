@@ -47,9 +47,7 @@ function Cards() {
     };
 
     const renderCards = useMemo(() => {
-        return getAllCards.map((item) => {
-            return <Card key={`card${item.id}`} {...item} removeCard={handleRemoveCard} />;
-        });
+        return getAllCards.map((item) => <Card key={`card-${item.id}`} {...item} removeCard={handleRemoveCard} />);
     }, [getAllCards]);
 
     const cards = getAllCards.length !== 0 ? renderCards : <span className="empty">No cards</span>;

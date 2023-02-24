@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+
+import { useSelector } from "react-redux";
+import { cardSelectors } from "../Cards/cardsSlice";
+
 import "./select.scss";
 
-function Select({ items, cashValue, setSelectData }) {
+function Select({ setData }) {
+    const getAllCards = useSelector(cardSelectors.selectAll);
+    const cashValue = useSelector((state) => state.balance.cash);
+
     const [select, setSelect] = useState({
         open: false,
         title: "Cash",
         value: cashValue,
     });
 
-    const listItems = items.map((item) => (
+    const listItems = getAllCards.map((item) => (
         <li
             className="custom-select-dropdown__item custom-select-dropdown-item"
             key={`select-item-${item.id}`}
@@ -27,7 +34,7 @@ function Select({ items, cashValue, setSelectData }) {
             value,
         }));
 
-        setSelectData({ id, value });
+        setData({ id, value });
     };
 
     const animation = {
