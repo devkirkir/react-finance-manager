@@ -12,7 +12,9 @@ function HistoryItem({ title, category, date, value, type }) {
             <span className="history-wrapper-item__title">{title}</span>
             <span className="history-wrapper-item__category">{category}</span>
             <span className="history-wrapper-item__date">{date}</span>
-            <span className={valueClassNames}>{type === "expense" ? `${value}$` : `+${value}$`}</span>
+            <span className={valueClassNames}>
+                {type === "expense" ? `-${value}$` : `+${value}$`}
+            </span>
         </li>
     );
 }

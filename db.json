@@ -1,21 +1,144 @@
 {
-    "balance": {
-        "cash": 200,
-        "cards": 0
+  "balance": {
+    "cash": 0,
+    "cards": 0
+  },
+  "cards": [
+    {
+      "id": "VAAwGquly8oHTcn7XWF4t",
+      "value": "1200",
+      "lastNumbers": "1212",
+      "cardType": "mastercard"
+    }
+  ],
+  "history": [
+    {
+      "id": "LZgBOAzQmnATuBwscy7qt",
+      "title": "qwe",
+      "category": "history category",
+      "date": "date",
+      "value": "12",
+      "type": "income"
     },
-    "cards": [
-        {
-            "id": "aECOOu5IivJ3ZwVe6frJ6",
-            "value": "500",
-            "lastNumbers": "2222",
-            "cardType": "visa"
-        },
-        {
-            "id": "qTAxi6LuDX1_-d2v4IUym",
-            "value": "200",
-            "lastNumbers": "2121",
-            "cardType": "mastercard"
-        }
-    ],
-    "history": []
+    {
+      "id": "-DKOjb0fi1LI-D5-byHcl",
+      "title": "dassda",
+      "category": "history category",
+      "date": "date",
+      "value": "2",
+      "type": "income"
+    },
+    {
+      "id": "M5yu6tvPcyccsCdfcl4hK",
+      "title": "2das",
+      "category": "history category",
+      "date": "date",
+      "value": "12",
+      "type": "income"
+    },
+    {
+      "id": "umrKUH8xe7eM5YIdeO2gc",
+      "title": "fgds",
+      "category": "history category",
+      "date": "date",
+      "value": "4",
+      "type": "income"
+    },
+    {
+      "id": "mo622b_8BucdDws_ESxiO",
+      "title": "dfdsa",
+      "category": "history category",
+      "date": "date",
+      "value": "1000",
+      "type": "income"
+    },
+    {
+      "id": "yhfgurNO-ZUj1wUVDpUdP",
+      "title": "qq",
+      "category": "history category",
+      "date": "date",
+      "value": "2000",
+      "type": "income"
+    },
+    {
+      "id": "Ncz4eC_cshEYH69diOSTK",
+      "title": "qwqw",
+      "category": "history category",
+      "date": "date",
+      "value": "1",
+      "type": "income"
+    },
+    {
+      "id": "Nx7JyQYSdkfaklplFj0Wn",
+      "title": "12",
+      "category": "history category",
+      "date": "date",
+      "value": "2",
+      "type": "income"
+    },
+    {
+      "id": "QpBoJOAaqKEO52RCTNda7",
+      "title": "dasdas",
+      "category": "history category",
+      "date": "date",
+      "value": "2231",
+      "type": "expense"
+    },
+    {
+      "id": "_1CS2zZamnHpaN7g5AZN6",
+      "title": "qwerty",
+      "category": "history category",
+      "date": "date",
+      "value": "100",
+      "type": "income"
+    },
+    {
+      "id": "0H_zQIWlGOvszt5LdxeJG",
+      "title": "expense",
+      "category": "history category",
+      "date": "date",
+      "value": "100",
+      "type": "expense"
+    },
+    {
+      "id": "DFtSvNSfTmfo2gf0_dcNh",
+      "title": "income",
+      "category": "history category",
+      "date": "date",
+      "value": "100",
+      "type": "income"
+    },
+    {
+      "id": "xsBd91ODtYjdPgFvrZv-h",
+      "title": "ds",
+      "category": "history category",
+      "date": "date",
+      "value": "1222",
+      "type": "income"
+    },
+    {
+      "id": "BV3z9VYY4Gs3KxRGMvGb-",
+      "title": "21",
+      "category": "history category",
+      "date": "date",
+      "value": "1322",
+      "type": "expense"
+    },
+    {
+      "id": "nMqbNECNCIUxHYqGH0zN6",
+      "title": "sa",
+      "category": "history category",
+      "date": "date",
+      "value": "122",
+      "type": "income"
+    },
+    {
+      "id": "lU76t7JhQZQBmMahOwAJF",
+      "title": "das",
+      "category": "history category",
+      "date": "date",
+      "value": "122",
+      "type": "expense"
+    }
+  ]
 }

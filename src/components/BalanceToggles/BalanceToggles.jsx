@@ -5,7 +5,10 @@ function BalanceToggles({ changeType, activeType }) {
     activeType = activeType[0].toUpperCase() + activeType.slice(1, 5).toLowerCase();
 
     const filters = types.map((item, index) => {
-        const classNames = item == activeType ? "control-btns__btn control-btns__btn_active" : "control-btns__btn";
+        const classNames =
+            item == activeType
+                ? "balance-wrapper-balance-control-btns__btn balance-wrapper-balance-control-btns__btn_active"
+                : "balance-wrapper-balance-control-btns__btn";
 
         return (
             <button

@@ -1,7 +1,7 @@
 {
-    "name": "react-redux-blog",
+    "name": "finance-manager",
     "private": true,
-    "version": "0.7.5",
+    "version": "0.7.7",
     "type": "module",
     "scripts": {
         "dev": "concurrently \"vite\" \"json-server --watch db.json\"",

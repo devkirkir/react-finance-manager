@@ -37,7 +37,7 @@ function Balance() {
     return (
         <div className="balance-wrapper">
             <h3 className="balance-wrapper__title">Balance</h3>
-            <div className="balance">
+            <div className="balance-wrapper__balance balance-wrapper-balance">
                 {error}
                 {loading}
                 {content}
@@ -49,9 +49,9 @@ function Balance() {
 function View({ data, changeType, balance }) {
     return (
         <>
-            <h3 className="balance__title">{data.typeLabel}</h3>
+            <h3 className="balance-wrapper-balance__title">{data.typeLabel}</h3>
 
-            <span className="balance__value">
+            <span className="balance-wrapper-balance__value">
                 <span className="dollar">$</span>
 
                 {data[balance.activeType].number}
@@ -59,7 +59,7 @@ function View({ data, changeType, balance }) {
                 <span className="float">{data[balance.activeType].float}</span>
             </span>
 
-            <div className="control-btns">
+            <div className="balance-wrapper-balance__control-btns balance-wrapper-balance-control-btns">
                 <BalanceToggles changeType={changeType} activeType={balance.activeType} />
             </div>
         </>

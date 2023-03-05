@@ -1,4 +1,8 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import {
+    createAsyncThunk,
+    createEntityAdapter,
+    createSlice,
+} from "@reduxjs/toolkit";
 import useHttp from "../../hooks/useHttp";
 
 const historyAdapter = createEntityAdapter();
@@ -13,7 +17,12 @@ export const fetchHistory = createAsyncThunk("history/fetchHistory", () => {
 });
 
 export const addHistory = createAsyncThunk("history/addHistory", (body) => {
-    return request("http://localhost:3000/history", "POST", { "Content-Type": "application/json" }, JSON.stringify(body));
+    return request(
+        "http://localhost:3000/history",
+        "POST",
+        { "Content-Type": "application/json" },
+        JSON.stringify(body)
+    );
 });
 
 const historySlice = createSlice({
@@ -46,6 +55,8 @@ const historySlice = createSlice({
     },
 });
 
-export const historySelectors = historyAdapter.getSelectors((state) => state.history);
+export const historySelectors = historyAdapter.getSelectors(
+    (state) => state.history
+);
 
 export default historySlice.reducer;

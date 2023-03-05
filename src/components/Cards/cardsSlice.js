@@ -1,4 +1,8 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import {
+    createAsyncThunk,
+    createEntityAdapter,
+    createSlice,
+} from "@reduxjs/toolkit";
 
 import useHttp from "../../hooks/useHttp";
 
@@ -15,12 +19,25 @@ export const fetchCards = createAsyncThunk("cards/fetchCards", () => {
 });
 
 export const addCard = createAsyncThunk("cards/addCard", (body) => {
-    return request("http://localhost:3000/cards", "POST", { "Content-Type": "application/json" }, JSON.stringify(body));
+    return request(
+        "http://localhost:3000/cards",
+        "POST",
+        { "Content-Type": "application/json" },
+        JSON.stringify(body)
+    );
 });
 
-export const changeCardBalance = createAsyncThunk("cards/addCardBalance", (data) => {
-    return request(`http://localhost:3000/cards/${data.id}`, "PATCH", { "Content-Type": "application/json" }, JSON.stringify(data.body));
-});
+export const changeCardBalance = createAsyncThunk(
+    "cards/addCardBalance",
+    (data) => {
+        return request(
+            `http://localhost:3000/cards/${data.id}`,
+            "PATCH",
+            { "Content-Type": "application/json" },
+            JSON.stringify(data.body)
+        );
+    }
+);
 
 const cardsSlice = createSlice({
     name: "cards",

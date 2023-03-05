@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ModalIncome from "../Modal/ModalIncome/ModalIncome";
+import ModalIncomeExpense from "../Modal/ModalIncome/ModalIncomeExpense";
 
 import Modal from "./../Modal/Modal";
 
@@ -13,19 +13,34 @@ function ControlButtons() {
 
     return (
         <div className="control-btns-wrapper">
-            <button className="control-btns-wrapper__btn" onClick={() => setModal((modal) => ({ isOpen: true, type: "income" }))}>
+            <button
+                className="control-btns-wrapper__btn"
+                onClick={() =>
+                    setModal((modal) => ({ isOpen: true, type: "income" }))
+                }
+            >
                 <span className="income">Income</span>
             </button>
-            <button className="control-btns-wrapper__btn" onClick={() => setModal((modal) => ({ isOpen: true, type: "expense" }))}>
+            <button
+                className="control-btns-wrapper__btn"
+                onClick={() =>
+                    setModal((modal) => ({ isOpen: true, type: "expense" }))
+                }
+            >
                 <span className="expense">Expense</span>
             </button>
 
             {modal.isOpen && modal.type === "income" && (
                 <Modal>
-                    <ModalIncome setModal={setModal} />
+                    <ModalIncomeExpense type={"income"} setModal={setModal} />
                 </Modal>
             )}
-            {modal.isOpen && modal.type === "expense" && <Modal>Expense</Modal>}
+
+            {modal.isOpen && modal.type === "expense" && (
+                <Modal>
+                    <ModalIncomeExpense type={"expense"} setModal={setModal} />
+                </Modal>
+            )}
         </div>
     );
 }
