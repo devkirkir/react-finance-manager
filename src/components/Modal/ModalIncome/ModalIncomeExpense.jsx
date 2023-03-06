@@ -10,7 +10,8 @@ import { addHistory } from "../../History/historySlice";
 
 import PropTypes from "prop-types";
 
-import Select from "../../Select/Select";
+import AccountSelect from "../../AccountSelect/AccountSelect";
+import ItemSelect from "../../ItemSelect/ItemSelect";
 
 import "./ModalIncomeExpense.scss";
 
@@ -21,6 +22,7 @@ function ModalIncomeExpense({ type, setModal }) {
     const [selectData, setSelectData] = useState({
         id: "cash",
         value: cashValue,
+        category: null,
     });
 
     const {
@@ -29,12 +31,12 @@ function ModalIncomeExpense({ type, setModal }) {
         formState: { errors },
     } = useForm();
 
-    const historyGenerator = (title, value) => {
+    const historyGenerator = (title, value, category) => {
         return {
             id: nanoid(),
             title,
-            category: "history category",
-            date: "date",
+            category,
+            date: new Date().toLocaleDateString(),
             value,
             type,
         };
@@ -57,7 +59,11 @@ function ModalIncomeExpense({ type, setModal }) {
 
         dispatch(
             addHistory(
-                historyGenerator(data.incomeFormTitle, data.incomeFormAmount)
+                historyGenerator(
+                    data.incomeFormTitle,
+                    data.incomeFormAmount,
+                    selectData.category
+                )
             )
         );
 
@@ -129,6 +135,15 @@ function ModalIncomeExpense({ type, setModal }) {
                         {errors?.incomeFormTitle?.message}
                     </p>
 
+                    <label className="income-expense-form__label">
+                        Categories:
+                    </label>
+
+                    <ItemSelect
+                        selectData={selectData}
+                        setData={setSelectData}
+                    />
+
                     <label
                         htmlFor="income-expense-form__amount"
                         className="income-expense-form__label"
@@ -156,7 +171,8 @@ function ModalIncomeExpense({ type, setModal }) {
                         Select {type === "income" ? "deposit " : "withdraw "}
                         account:
                     </label>
-                    <Select setData={setSelectData} />
+
+                    <AccountSelect setData={setSelectData} />
 
                     <input
                         type="submit"
@@ -179,8 +195,8 @@ function ModalIncomeExpense({ type, setModal }) {
 }
 
 ModalIncomeExpense.propTypes = {
-    type: PropTypes.string.required,
-    setModal: PropTypes.func.required,
+    type: PropTypes.string.isRequired,
+    setModal: PropTypes.func.isRequired,
 };
 
 export default ModalIncomeExpense;

@@ -1,4 +1,4 @@
-# ⚡️ React.JS | Finance Manager v0.7.7
+# ⚡️ React.JS | Finance Manager v0.7.8
 
 A simple finance manager. Which allows you to monitor the balance, add cards, get goals and watch expenses.
 

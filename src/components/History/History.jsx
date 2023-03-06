@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHistory, historySelectors } from "./historySlice";
@@ -7,6 +7,7 @@ import HistoryItem from "../HistoryItem/HistoryItem";
 import Loader from "../Loader/Loader";
 
 import "./history.scss";
+import HistoryNavigation from "../HistoryNavigation/HistoryNavigation";
 
 function History() {
     const dispatch = useDispatch();
@@ -17,11 +18,24 @@ function History() {
         dispatch(fetchHistory());
     }, []);
 
+    const sortByField = (field) => {
+        return (a, b) => (b[field] > a[field] ? 1 : -1);
+    };
+
     const renderHistory = useMemo(() => {
-        return getAllHistory.map((item) => <HistoryItem key={`history-${item.id}`} {...item} />);
+        return getAllHistory
+            .sort(sortByField("date"))
+            .map((item) => (
+                <HistoryItem key={`history-${item.id}`} {...item} />
+            ));
     });
 
-    const history = getAllHistory.length !== 0 ? renderHistory : <span className="empty">No history</span>;
+    const history =
+        getAllHistory.length !== 0 ? (
+            renderHistory
+        ) : (
+            <span className="empty">No history</span>
+        );
 
     const error = isLoading === "rejected" ? "error" : null;
     const loading = isLoading === "pending" ? <Loader /> : null;
@@ -44,6 +58,10 @@ function History() {
                     {loading}
                     {content}
                 </ul>
+
+                <div className="history-wrapper__footer">
+                    <HistoryNavigation />
+                </div>
             </div>
         </div>
     );

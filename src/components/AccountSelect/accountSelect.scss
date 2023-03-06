@@ -1,0 +1,44 @@
+.account-select {
+    position: relative;
+    .account-select-selected {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid $bgHover;
+        border-radius: 3px;
+        padding: 15px;
+        cursor: pointer;
+        transition: background 0.3s linear;
+
+        .account-select-selected__value {
+            font-weight: 700;
+            color: $green;
+        }
+    }
+
+    .account-select-dropdown {
+        position: absolute;
+        width: 100%;
+
+        .account-select-dropdown__list {
+            border-radius: 3px;
+
+            .account-select-dropdown-item {
+                display: flex;
+                justify-content: space-between;
+                border: 1px solid $bgHover;
+                padding: 15px;
+                background-color: #fff;
+                cursor: pointer;
+
+                &__value {
+                    font-weight: 700;
+                    color: $green;
+                }
+
+                &:hover {
+                    background-color: $bgHover;
+                }
+            }
+        }
+    }
+}
