@@ -6,7 +6,7 @@ import { cardSelectors } from "../Cards/cardsSlice";
 
 import "./accountSelect.scss";
 
-function AccountSelect({ setData }) {
+function AccountSelect({ data, setData }) {
     const getAllCards = useSelector(cardSelectors.selectAll);
     const cashValue = useSelector((state) => state.balance.cash);
 
@@ -40,7 +40,7 @@ function AccountSelect({ setData }) {
             value,
         }));
 
-        setData({ id, value });
+        setData((data) => ({ ...data, id, value }));
     };
 
     const animation = {

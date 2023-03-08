@@ -5,11 +5,31 @@
     .item-select-selected {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         border: 1px solid $bgHover;
         border-radius: 3px;
         padding: 15px;
         cursor: pointer;
         transition: background 0.3s linear;
+
+        &__arrow {
+            width: 10px;
+            height: 10px;
+            transform: rotate(45deg);
+            transition: transform 0.1s linear;
+
+            &--up {
+                border-top: 2px solid $lightText;
+                border-left: 2px solid $lightText;
+                margin-top: 5px;
+            }
+
+            &--down {
+                border-bottom: 2px solid $lightText;
+                border-right: 2px solid $lightText;
+                margin-top: -5px;
+            }
+        }
     }
 
     .item-select-dropdown {

@@ -41,9 +41,6 @@ const historySlice = createSlice({
                 state.isLoading = "rejected";
             })
 
-            .addCase(addHistory.pending, (state) => {
-                state.isLoading = "pending";
-            })
             .addCase(addHistory.fulfilled, (state, action) => {
                 historyAdapter.addOne(state, action.payload);
                 state.isLoading = "idle";

@@ -3,33 +3,31 @@ import { motion } from "framer-motion";
 
 import "./itemSelect.scss";
 
-function ItemSelect({ selectData, setData }) {
-    const categories = ["category1", "category2", "category3"];
-
+function ItemSelect({ items, setData }) {
     const [select, setSelect] = useState({
         open: false,
-        category: "Select category",
+        selectItem: "Select",
     });
 
-    const listItems = categories.map((item) => (
+    const listItems = items.map((item, index) => (
         <li
             className="item-select-dropdown__item item-select-dropdown-item"
-            key={`select-item-${item}`}
+            key={`select-item-${item}-${index}`}
             onClick={() => handleSelect(item)}
         >
             <span className="item-select-dropdown-item__value">{item}</span>
         </li>
     ));
 
-    const handleSelect = (category) => {
+    const handleSelect = (selectItem) => {
         setSelect((select) => ({
             open: false,
-            category,
+            selectItem,
         }));
 
         setData((selectData) => ({
             ...selectData,
-            category,
+            selectItem,
         }));
     };
 
@@ -52,8 +50,15 @@ function ItemSelect({ selectData, setData }) {
                 }
             >
                 <span className="item-select-selected__value">
-                    {select.category}
+                    {select.selectItem}
                 </span>
+                <span
+                    className={
+                        select.open
+                            ? "item-select-selected__arrow item-select-selected__arrow--up"
+                            : "item-select-selected__arrow item-select-selected__arrow--down"
+                    }
+                ></span>
             </div>
 
             {select.open && (

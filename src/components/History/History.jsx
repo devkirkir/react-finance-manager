@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHistory, historySelectors } from "./historySlice";
 
 import HistoryItem from "../HistoryItem/HistoryItem";
-import Loader from "../Loader/Loader";
+import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
+import HistoryNavigation from "../HistoryNavigation/HistoryNavigation";
 
 import "./history.scss";
-import HistoryNavigation from "../HistoryNavigation/HistoryNavigation";
 
 function History() {
     const dispatch = useDispatch();
@@ -25,8 +25,12 @@ function History() {
     const renderHistory = useMemo(() => {
         return getAllHistory
             .sort(sortByField("date"))
-            .map((item) => (
-                <HistoryItem key={`history-${item.id}`} {...item} />
+            .map((item, index) => (
+                <HistoryItem
+                    key={`history-${item.id}`}
+                    {...item}
+                    indexDelay={index}
+                />
             ));
     });
 
@@ -38,7 +42,12 @@ function History() {
         );
 
     const error = isLoading === "rejected" ? "error" : null;
-    const loading = isLoading === "pending" ? <Loader /> : null;
+
+    const loading =
+        isLoading === "pending" ? (
+            <SkeletonLoading type={"history"} count={12} />
+        ) : null;
+
     const content = isLoading === "idle" ? history : null;
 
     return (

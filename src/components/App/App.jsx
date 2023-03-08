@@ -3,15 +3,15 @@ import Cards from "../Cards/Cards";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import History from "../History/History";
 
+import { motion } from "framer-motion";
+
 import "./App.scss";
 
 function App() {
     return (
         <div className="App">
             <div className="left-column">
-                <Balance />
-                <ControlButtons />
-                <Cards />
+                <Balance /> <ControlButtons /> <Cards />
             </div>
             <div className="right-column">
                 <History />

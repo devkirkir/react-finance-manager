@@ -1,14 +1,14 @@
 {
   "balance": {
-    "cash": 901,
+    "cash": 404,
     "cards": 0
   },
   "cards": [
     {
-      "id": "VAAwGquly8oHTcn7XWF4t",
-      "value": "1300",
+      "id": "GpTPygEi_JJQC7uOOiAzc",
+      "value": "1222.2",
       "lastNumbers": "1212",
-      "cardType": "mastercard"
+      "cardType": "visa"
     }
   ],
   "history": [
@@ -98,102 +98,6 @@
       "category": "history category",
       "date": "06.03.2023",
       "value": "534",
-      "type": "income"
-    },
-    {
-      "id": "tfEY9aCHPRU-QAiF1rf_Q",
-      "title": "da",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "32",
-      "type": "income"
-    },
-    {
-      "id": "A5AOEGqCTbuu0lMemmjC_",
-      "title": "fds",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "43",
-      "type": "income"
-    },
-    {
-      "id": "Agl2sSPDWs_US1VStF94j",
-      "title": "fds",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "43",
-      "type": "income"
-    },
-    {
-      "id": "UKE_GHQ_cGaK4LMtfFkBN",
-      "title": "fds",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "54",
-      "type": "income"
-    },
-    {
-      "id": "X3l_cuUnuapsRwMHU2oeJ",
-      "title": "fsdf",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "54",
-      "type": "income"
-    },
-    {
-      "id": "HAzP75_Fkt0o4mMiG-ioo",
-      "title": "fds",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "12",
-      "type": "income"
-    },
-    {
-      "id": "Y0RwyncsUy96fUELdXwfe",
-      "title": "da",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "172",
-      "type": "expense"
-    },
-    {
-      "id": "LkwgG2NROm0-0vJGjvq_N",
-      "title": "fdsfsd",
-      "category": "category1",
-      "date": "06.03.2023",
-      "value": "12",
-      "type": "income"
-    },
-    {
-      "id": "Ee8aAgADwcDojisqeGkLg",
-      "title": "fdsfsd",
-      "category": "category1",
-      "date": "06.03.2023",
-      "value": "212",
-      "type": "expense"
-    },
-    {
-      "id": "X1LFrnxXQGUsWgx8hoigw",
-      "title": "Income",
-      "category": "category3",
-      "date": "06.03.2023",
-      "value": "100",
-      "type": "income"
-    },
-    {
-      "id": "U3BadzexRoIf_Q7sqCNgU",
-      "title": "qw",
-      "category": "category2",
-      "date": "06.03.2023",
-      "value": "1",
-      "type": "income"
-    },
-    {
-      "id": "LPNj0eUXhWIKtP7GIWcQ_",
-      "title": "qwe",
-      "category": "category3",
-      "date": "06.03.2023",
-      "value": "88",
       "type": "income"
     }
   ]

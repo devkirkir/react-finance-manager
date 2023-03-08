@@ -6,7 +6,7 @@ import { fetchBalance, changeActiveType } from "./balanceSlice";
 import useFormatNumber from "../../hooks/useFormatNumber";
 
 import BalanceToggles from "../BalanceToggles/BalanceToggles";
-import Loader from "../Loader/Loader";
+import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
 
 import "./balance.scss";
 
@@ -24,15 +24,23 @@ function Balance() {
     };
 
     const data = {
-        typeLabel: balance.activeType[0].toUpperCase() + balance.activeType.slice(1, 5).toLowerCase(),
+        typeLabel:
+            balance.activeType[0].toUpperCase() +
+            balance.activeType.slice(1, 5).toLowerCase(),
         cards: useFormatNumber(balance.cards.toFixed(2)),
         cash: useFormatNumber(balance.cash.toFixed(2)),
         total: useFormatNumber((balance.cards + balance.cash).toFixed(2)),
     };
 
     const error = balance.balanceLoading === "rejected" ? "error" : null;
-    const loading = balance.balanceLoading === "pending" ? <Loader /> : null;
-    const content = balance.balanceLoading === "idle" ? <View data={data} balance={balance} changeType={changeType} /> : null;
+    const loading =
+        balance.balanceLoading === "pending" ? (
+            <SkeletonLoading type={balance} />
+        ) : null;
+    const content =
+        balance.balanceLoading === "idle" ? (
+            <View data={data} balance={balance} changeType={changeType} />
+        ) : null;
 
     return (
         <div className="balance-wrapper">
@@ -60,7 +68,10 @@ function View({ data, changeType, balance }) {
             </span>
 
             <div className="balance-wrapper-balance__control-btns balance-wrapper-balance-control-btns">
-                <BalanceToggles changeType={changeType} activeType={balance.activeType} />
+                <BalanceToggles
+                    changeType={changeType}
+                    activeType={balance.activeType}
+                />
             </div>
         </>
     );

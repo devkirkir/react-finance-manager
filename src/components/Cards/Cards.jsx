@@ -7,10 +7,10 @@ import { setCardsBalance, subtractCardBalance } from "../Balance/balanceSlice";
 import useHttp from "../../hooks/useHttp.js";
 
 import Card from "../Card/Card";
-import Loader from "../Loader/Loader";
 import Modal from "../Modal/Modal.jsx";
 import ModalAddCard from "../Modal/ModalAddCard/ModalAddCard.jsx";
 import ModalError from "../Modal/ModalError/ModalError.jsx";
+import SkeletonLoading from "../SkeletonLoading/SkeletonLoading.jsx";
 
 import "./cards.scss";
 
@@ -34,7 +34,10 @@ function Cards() {
     }, [request]);
 
     const accumulateCardsBalance = () => {
-        return getAllCards.reduce((accumulator, current) => accumulator + +current.value, 0);
+        return getAllCards.reduce(
+            (accumulator, current) => accumulator + +current.value,
+            0
+        );
     };
 
     const handleRemoveCard = (id, value) => {
@@ -47,13 +50,28 @@ function Cards() {
     };
 
     const renderCards = useMemo(() => {
-        return getAllCards.map((item) => <Card key={`card-${item.id}`} {...item} removeCard={handleRemoveCard} />);
+        return getAllCards.map((item, index) => (
+            <Card
+                key={`card-${item.id}`}
+                {...item}
+                removeCard={handleRemoveCard}
+                indexDelay={index}
+            />
+        ));
     }, [getAllCards]);
 
-    const cards = getAllCards.length !== 0 ? renderCards : <span className="empty">No cards</span>;
+    const cards =
+        getAllCards.length !== 0 ? (
+            renderCards
+        ) : (
+            <span className="empty">No cards</span>
+        );
 
     const error = isLoading === "rejected" ? "error" : null;
-    const loading = isLoading === "pending" ? <Loader /> : null;
+    const loading =
+        isLoading === "pending" ? (
+            <SkeletonLoading type={"cards"} count={2} />
+        ) : null;
     const content = isLoading === "idle" ? cards : null;
 
     return (
@@ -65,14 +83,37 @@ function Cards() {
                     className="wrapper-header__add"
                     onClick={() => {
                         getAllCards.length < cardsLimit
-                            ? setCardModalOpen((isCardModalOpen) => !isCardModalOpen)
-                            : setErrorModalOpen((isErrorModalOpen) => !isErrorModalOpen);
+                            ? setCardModalOpen(
+                                  (isCardModalOpen) => !isCardModalOpen
+                              )
+                            : setErrorModalOpen(
+                                  (isErrorModalOpen) => !isErrorModalOpen
+                              );
                     }}
                 >
-                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
                         <circle cx="13" cy="13" r="13" fill="#F1F1F1" />
-                        <rect x="12" y="6" width="2" height="14" fill="#333333" />
-                        <rect x="6" y="14" width="2" height="14" transform="rotate(-90 6 14)" fill="#333333" />
+                        <rect
+                            x="12"
+                            y="6"
+                            width="2"
+                            height="14"
+                            fill="#333333"
+                        />
+                        <rect
+                            x="6"
+                            y="14"
+                            width="2"
+                            height="14"
+                            transform="rotate(-90 6 14)"
+                            fill="#333333"
+                        />
                     </svg>
                 </button>
             </div>
@@ -90,7 +131,9 @@ function Cards() {
 
             {isErrorModalOpen && (
                 <Modal>
-                    <ModalError setErrorModalOpen={setErrorModalOpen}>Bro, max limit 3 cards :c</ModalError>
+                    <ModalError setErrorModalOpen={setErrorModalOpen}>
+                        Bro, max limit 3 cards :c
+                    </ModalError>
                 </Modal>
             )}
         </div>

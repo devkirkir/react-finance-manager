@@ -2,7 +2,9 @@ import "./balanceToggles.scss";
 
 function BalanceToggles({ changeType, activeType }) {
     const types = ["Total", "Cards", "Cash"];
-    activeType = activeType[0].toUpperCase() + activeType.slice(1, 5).toLowerCase();
+
+    activeType =
+        activeType[0].toUpperCase() + activeType.slice(1, 5).toLowerCase();
 
     const filters = types.map((item, index) => {
         const classNames =

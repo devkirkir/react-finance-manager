@@ -60,9 +60,6 @@ const cardsSlice = createSlice({
                 state.cardsLoading = "rejected";
             })
 
-            .addCase(addCard.pending, (state) => {
-                state.cardsLoading = "pending";
-            })
             .addCase(addCard.fulfilled, (state, action) => {
                 cardsAdapter.addOne(state, action.payload);
                 state.cardsLoading = "idle";

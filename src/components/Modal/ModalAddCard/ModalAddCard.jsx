@@ -1,163 +1,161 @@
-import { useReducer } from "react";
-
 import { nanoid } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 
-import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 import { addCard } from "./../../Cards/cardsSlice.js";
 
-import useFormatNumber from "../../../hooks/useFormatNumber.js";
+import ItemSelect from "../../ItemSelect/ItemSelect.jsx";
 
-import visa from "../../../assets/visa.png";
-import mastercard from "../../../assets/mastercard.png";
+import PropTypes from "prop-types";
 
-import "./modalAddCard.scss";
+function ModalAddCard({ setCardModalOpen }) {
+    const dispatch = useDispatch();
 
-const initialState = {
-    data: {
-        balance: "",
-        lastNumbers: "",
-        cardType: "visa",
-    },
-    index: 0,
-    currentValue: null,
-    errorLabel: null,
-};
+    const [selectData, setSelectData] = useState({
+        selectItem: null,
+        selectItemError: null,
+    });
 
-function reducer(state, action) {
-    switch (action.type) {
-        case "next":
-            return {
-                ...state,
-                index: state.index + 1,
-            };
-        case "back":
-            return {
-                ...state,
-                index: state.index - 1,
-            };
-        case "onError":
-            return {
-                ...state,
-                errorLabel: action.payload,
-            };
-        case "setCurrentValue":
-            return {
-                ...state,
-                currentValue: action.payload,
-            };
-        case "onBalanceChange":
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    balance: action.payload,
-                },
-                currentValue: action.payload,
-            };
-        case "onNumbersChange":
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    lastNumbers: action.payload,
-                },
-                currentValue: action.payload,
-            };
-        case "onCardTypeChange":
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    cardType: action.payload,
-                },
-                currentValue: action.payload,
-            };
-        default: {
-            return state;
-        }
-    }
-}
-
-function ModalAddCardView({ setCardModalOpen }) {
-    const reduxDispatch = useDispatch();
-
-    const [state, dispatch] = useReducer(reducer, initialState);
-
-    const addCards = () => {
-        reduxDispatch(
+    const dispatchCard = (value, lastNumbers, cardType) => {
+        dispatch(
             addCard({
                 id: nanoid(),
-                value: state.data.balance,
-                lastNumbers: state.data.lastNumbers,
-                cardType: state.data.cardType.toLowerCase(),
+                value,
+                lastNumbers,
+                cardType,
             })
         );
     };
 
-    const setCurrentValue = (data, stateIndex) => {
-        return Object.values(data).filter((item, index) => (index === stateIndex ? item : ""))[0];
-    };
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-    const handleNextBtnClick = () => {
-        if (state.index === views.length - 1) {
-            addCards();
-            setCardModalOpen(false);
+    const onSubmit = (data) => {
+        if (selectData.selectItem === null) {
+            setSelectData((selectData) => ({
+                ...selectData,
+                selectItemError: "Select item",
+            }));
+
             return;
         }
 
-        if (!state.currentValue) {
-            dispatch({ type: "onError", payload: "Input cannot be empty!" });
-            return;
-        }
+        dispatchCard(
+            data.addCardFormBalance,
+            data.addCardFormLastNumbers,
+            selectData.selectItem.toLowerCase()
+        );
 
-        dispatch({
-            type: "setCurrentValue",
-            payload: setCurrentValue(state.data, state.index + 1),
-        });
-
-        dispatch({ type: "next" });
-        dispatch({ type: "onError", payload: null });
+        setCardModalOpen(false);
     };
 
-    const handleBackBtnClick = () => {
-        if (state.index === 0) return;
-
-        dispatch({
-            type: "setCurrentValue",
-            payload: setCurrentValue(state.data, state.index - 1),
-        });
-
-        dispatch({ type: "back" });
-        dispatch({ type: "onError", payload: null });
-    };
-
-    const views = [
-        <BalanceInput dispatch={dispatch} value={state.data.balance} error={state.errorLabel} />,
-        <LastNumbersInput dispatch={dispatch} value={state.data.lastNumbers} error={state.errorLabel} />,
-        <CardTypeSelect dispatch={dispatch} value={state.data.cardType} />,
-        <ConfirmCard value={state.data.balance} cardType={state.data.cardType} lastNumbers={state.data.lastNumbers} />,
-    ];
-
-    let btnLabel = state.index !== views.length - 1 ? "Next" : "Done";
-    let disabled = state.errorLabel === null ? false : true;
+    const cardType = ["Visa", "Mastercard"];
 
     return (
         <>
-            <div className="content">
+            <span className="content">
                 <h3 className="content__title">Add Card</h3>
-                {views[state.index]}
-            </div>
+
+                <form
+                    className="content__form content-form"
+                    onSubmit={handleSubmit(onSubmit)}
+                >
+                    <label
+                        htmlFor="content-form__balance"
+                        className="content-form__label"
+                    >
+                        Balance:
+                    </label>
+
+                    <input
+                        id="content-form__balance"
+                        className={
+                            errors.addCardFormBalance
+                                ? "content-form__input content-form__input_invalid"
+                                : "content-form__input"
+                        }
+                        type="text"
+                        placeholder="Balance"
+                        {...register("addCardFormBalance", {
+                            required: "Input cannot be empty!",
+                            min: {
+                                value: 0,
+                                message: "Min balance 0",
+                            },
+                            pattern: {
+                                value: /^(\d*.{2}\d|\d*)$/g,
+                                message: "Wrong format",
+                            },
+                        })}
+                    />
+
+                    <p className="content-form__error">
+                        {errors?.addCardFormBalance?.message}
+                    </p>
+
+                    <label
+                        htmlFor="content-form__last"
+                        className="content-form__label"
+                    >
+                        Last 4 digit:
+                    </label>
+
+                    <input
+                        id="content-form__last"
+                        className={
+                            errors.addCardFormLastNumbers
+                                ? "content-form__input content-form__input_invalid"
+                                : "content-form__input"
+                        }
+                        type="number"
+                        placeholder="Last 4 digit"
+                        {...register("addCardFormLastNumbers", {
+                            required: "Input cannot be empty!",
+                            pattern: {
+                                value: /^(\d*)$/g,
+                                message: "Wrong format",
+                            },
+                            minLength: {
+                                value: 4,
+                                message: "Min lenght 4",
+                            },
+                            maxLength: {
+                                value: 4,
+                                message: "Max lenght 4",
+                            },
+                        })}
+                    />
+
+                    <p className="content-form__error">
+                        {errors?.addCardFormLastNumbers?.message}
+                    </p>
+
+                    <label className="content-form__label">Card type:</label>
+
+                    <ItemSelect items={cardType} setData={setSelectData} />
+
+                    <p className="content-form__error">
+                        {selectData?.selectItemError}
+                    </p>
+
+                    <input
+                        type="submit"
+                        className="content-form__submit"
+                        value="Add Card"
+                    />
+                </form>
+            </span>
 
             <div className="modal-btns">
-                <button className="modal-btns__btn" onClick={() => handleNextBtnClick()} disabled={disabled}>
-                    {btnLabel}
-                </button>
-                <button className="modal-btns__btn" onClick={() => handleBackBtnClick()}>
-                    Back
-                </button>
-                <button className="modal-btns__btn" onClick={() => setCardModalOpen(false)}>
+                <button
+                    className="modal-btns__btn"
+                    onClick={() => setCardModalOpen(false)}
+                >
                     Close
                 </button>
             </div>
@@ -165,140 +163,8 @@ function ModalAddCardView({ setCardModalOpen }) {
     );
 }
 
-function BalanceInput({ dispatch, value, error }) {
-    const formattedValue = (value) => {
-        return value.match(/(\d*.{2}\d|\d*)/g)[0];
-    };
-
-    return (
-        <>
-            <input
-                id="card-balance-input"
-                type="number"
-                value={value}
-                className={error ? "input-form invalid" : "input-form"}
-                onChange={(event) => {
-                    if (event.target.value.length > 0) {
-                        dispatch({ type: "onError", payload: null });
-                    }
-
-                    dispatch({
-                        type: "onBalanceChange",
-                        payload: formattedValue(event.target.value),
-                    });
-                }}
-                placeholder="Balance"
-            />
-            <span className="error">{error}</span>
-        </>
-    );
-}
-
-BalanceInput.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired,
-    error: PropTypes.string,
+ModalAddCard.propTypes = {
+    setCardModalOpen: PropTypes.func.isRequired,
 };
 
-function LastNumbersInput({ dispatch, value, error }) {
-    const formattedValue = (value) => {
-        return value.length > 0 ? value.match(/\d{1,4}/)[0] : "";
-    };
-
-    const valid = (value) => {
-        if (value.length < 4) {
-            dispatch({
-                type: "onError",
-                payload: "Value length cannot be less then 4!",
-            });
-            return;
-        }
-
-        if (value.length > 4) {
-            dispatch({
-                type: "onError",
-                payload: "Value length cannot be more then 4!",
-            });
-            return;
-        }
-
-        if (value.length == 4) {
-            dispatch({ type: "onError", payload: null });
-            return true;
-        }
-    };
-
-    return (
-        <>
-            <input
-                className={error ? "input-form invalid" : "input-form"}
-                type="number"
-                placeholder="Last 4 digit"
-                value={value}
-                maxLength="4"
-                onChange={(event) => {
-                    valid(event.target.value);
-
-                    dispatch({
-                        type: "onNumbersChange",
-                        payload: formattedValue(event.target.value),
-                    });
-                }}
-            />
-            <span className="error">{error}</span>
-        </>
-    );
-}
-
-LastNumbersInput.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired,
-    error: PropTypes.string,
-};
-
-function CardTypeSelect({ dispatch }) {
-    return (
-        <select
-            className="select-form"
-            onChange={(event) =>
-                dispatch({
-                    type: "onCardTypeChange",
-                    payload: event.target.value,
-                })
-            }
-        >
-            <option>Visa</option>
-            <option>Mastercard</option>
-        </select>
-    );
-}
-
-function ConfirmCard({ value, lastNumbers, cardType }) {
-    const formattedValue = useFormatNumber((+value).toFixed(2));
-
-    let logo = cardType.toLowerCase() === "visa" ? visa : mastercard;
-
-    return (
-        <>
-            <div className="card confirm-card">
-                <img className="card__type" src={logo} alt="system logo" />
-
-                <span className="value">
-                    <span className="value__dollar">$</span>
-                    <span className="value__int">{formattedValue.number}</span>
-                    <span className="value__float">{formattedValue.float}</span>
-                </span>
-
-                <span className="card__number">{`**** **** **** ${lastNumbers}`}</span>
-            </div>
-        </>
-    );
-}
-
-ConfirmCard.propTypes = {
-    value: PropTypes.string.isRequired,
-    lastNumbers: PropTypes.string.isRequired,
-    cardType: PropTypes.string.isRequired,
-};
-
-export default ModalAddCardView;
+export default ModalAddCard;

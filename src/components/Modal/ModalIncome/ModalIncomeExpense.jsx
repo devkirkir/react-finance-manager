@@ -13,16 +13,17 @@ import PropTypes from "prop-types";
 import AccountSelect from "../../AccountSelect/AccountSelect";
 import ItemSelect from "../../ItemSelect/ItemSelect";
 
-import "./ModalIncomeExpense.scss";
-
 function ModalIncomeExpense({ type, setModal }) {
     const dispatch = useDispatch();
     const cashValue = useSelector((state) => state.balance.cash);
 
+    const categories = ["category1", "category2", "category3"];
+
     const [selectData, setSelectData] = useState({
         id: "cash",
         value: cashValue,
-        category: null,
+        selectItem: null,
+        selectItemError: null,
     });
 
     const {
@@ -31,11 +32,11 @@ function ModalIncomeExpense({ type, setModal }) {
         formState: { errors },
     } = useForm();
 
-    const historyGenerator = (title, value, category) => {
+    const historyGenerator = (title, value, selectItem) => {
         return {
             id: nanoid(),
             title,
-            category,
+            category: selectItem,
             date: new Date().toLocaleDateString(),
             value,
             type,
@@ -53,6 +54,15 @@ function ModalIncomeExpense({ type, setModal }) {
             },
         };
 
+        if (selectData.selectItem === null) {
+            setSelectData((selectData) => ({
+                ...selectData,
+                selectItemError: "Select item",
+            }));
+
+            return;
+        }
+
         if (obj.id === "cash") dispatch(changeCashBalance(+obj.body.value));
 
         if (obj.id !== "cash") dispatch(changeCardBalance(obj));
@@ -62,7 +72,7 @@ function ModalIncomeExpense({ type, setModal }) {
                 historyGenerator(
                     data.incomeFormTitle,
                     data.incomeFormAmount,
-                    selectData.category
+                    selectData.selectItem
                 )
             )
         );
@@ -99,22 +109,22 @@ function ModalIncomeExpense({ type, setModal }) {
                 </h3>
 
                 <form
-                    className="content__form income-expense-form"
+                    className="content__form content-form"
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <label
-                        htmlFor="income-expense-form__title"
-                        className="income-expense-form__label"
+                        htmlFor="content-form__title"
+                        className="content-form__label"
                     >
                         Title:
                     </label>
 
                     <input
-                        id="income-expense-form__title"
+                        id="content-form__title"
                         className={
                             errors.incomeFormTitle
-                                ? "income-expense-form__input income-expense-form__input_invalid"
-                                : "income-expense-form__input"
+                                ? "content-form__input content-form__input_invalid"
+                                : "content-form__input"
                         }
                         type="text"
                         placeholder="Title"
@@ -131,52 +141,51 @@ function ModalIncomeExpense({ type, setModal }) {
                         })}
                     />
 
-                    <p className="income-expense-form__error">
+                    <p className="content-form__error">
                         {errors?.incomeFormTitle?.message}
                     </p>
 
-                    <label className="income-expense-form__label">
-                        Categories:
-                    </label>
+                    <label className="content-form__label">Categories:</label>
 
-                    <ItemSelect
-                        selectData={selectData}
-                        setData={setSelectData}
-                    />
+                    <ItemSelect items={categories} setData={setSelectData} />
+
+                    <p className="content-form__error">
+                        {selectData.selectItemError}
+                    </p>
 
                     <label
-                        htmlFor="income-expense-form__amount"
-                        className="income-expense-form__label"
+                        htmlFor="content-form__amount"
+                        className="content-form__label"
                     >
                         Amount:
                     </label>
 
                     <input
-                        id="income-expense-form__amount"
+                        id="content-form__amount"
                         className={
                             errors.incomeFormAmount
-                                ? "income-expense-form__input income-expense-form__input_invalid"
-                                : "income-expense-form__input"
+                                ? "content-form__input content-form__input_invalid"
+                                : "content-form__input"
                         }
                         type="number"
                         placeholder="Amount"
                         {...register("incomeFormAmount", amountInputValid)}
                     />
 
-                    <p className="income-expense-form__error">
+                    <p className="content-form__error">
                         {errors?.incomeFormAmount?.message}
                     </p>
 
-                    <label className="income-expense-form__label">
+                    <label className="content-form__label">
                         Select {type === "income" ? "deposit " : "withdraw "}
                         account:
                     </label>
 
-                    <AccountSelect setData={setSelectData} />
+                    <AccountSelect data={selectData} setData={setSelectData} />
 
                     <input
                         type="submit"
-                        className="income-expense-form__submit"
+                        className="content-form__submit"
                         value={type === "income" ? "Deposit" : "Withdraw"}
                     />
                 </form>
