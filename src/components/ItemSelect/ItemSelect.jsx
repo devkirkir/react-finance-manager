@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import "./itemSelect.scss";
 
-function ItemSelect({ items, setData }) {
+function ItemSelect({ items, setData, error = null, register }) {
     const [select, setSelect] = useState({
         open: false,
         selectItem: "Select",
@@ -39,7 +39,11 @@ function ItemSelect({ items, setData }) {
     };
 
     return (
-        <div className="item-select">
+        <div
+            className={
+                error == null ? "item-select" : "item-select item-select--error"
+            }
+        >
             <div
                 className="item-select__selected item-select-selected"
                 onClick={() =>

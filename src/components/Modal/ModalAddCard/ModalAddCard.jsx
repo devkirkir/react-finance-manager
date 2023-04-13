@@ -80,6 +80,7 @@ function ModalAddCard({ setCardModalOpen }) {
                                 : "content-form__input"
                         }
                         type="text"
+                        inputMode="decimal"
                         placeholder="Balance"
                         {...register("addCardFormBalance", {
                             required: "Input cannot be empty!",
@@ -137,7 +138,11 @@ function ModalAddCard({ setCardModalOpen }) {
 
                     <label className="content-form__label">Card type:</label>
 
-                    <ItemSelect items={cardType} setData={setSelectData} />
+                    <ItemSelect
+                        items={cardType}
+                        setData={setSelectData}
+                        error={selectData?.selectItemError}
+                    />
 
                     <p className="content-form__error">
                         {selectData?.selectItemError}

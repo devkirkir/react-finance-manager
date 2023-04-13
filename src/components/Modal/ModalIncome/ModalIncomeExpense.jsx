@@ -149,10 +149,14 @@ function ModalIncomeExpense({ type, setModal }) {
 
                     <label className="content-form__label">Categories:</label>
 
-                    <ItemSelect items={categories} setData={setSelectData} />
+                    <ItemSelect
+                        items={categories}
+                        setData={setSelectData}
+                        error={selectData?.selectItemError}
+                    />
 
                     <p className="content-form__error">
-                        {selectData.selectItemError}
+                        {selectData?.selectItemError}
                     </p>
 
                     <label
@@ -170,7 +174,7 @@ function ModalIncomeExpense({ type, setModal }) {
                                 : "content-form__input"
                         }
                         type="text"
-                        inputMode="number"
+                        inputMode="decimal"
                         placeholder="Amount"
                         {...register("incomeFormAmount", amountInputValid)}
                     />

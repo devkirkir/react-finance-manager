@@ -1,6 +1,6 @@
 {
   "balance": {
-    "cash": 0,
+    "cash": 10,
     "cards": 0
   },
   "cards": [
@@ -50,6 +50,22 @@
       "category": "category2",
       "date": "4/13/2023",
       "value": "101.12",
+      "type": "expense"
+    },
+    {
+      "id": "BZV5IsXmmHBTQt6EJRZr3",
+      "title": "122",
+      "category": "category2",
+      "date": "4/13/2023",
+      "value": "12",
+      "type": "income"
+    },
+    {
+      "id": "wA6x54Mzlmc4Wx-gyJNGN",
+      "title": "Dollars expense",
+      "category": "category1",
+      "date": "4/13/2023",
+      "value": "2",
       "type": "expense"
     }
   ]
