@@ -12,8 +12,12 @@ const initialState = historyAdapter.getInitialState({
 
 const { request } = useHttp();
 
-export const fetchHistory = createAsyncThunk("history/fetchHistory", () => {
-    return request("http://localhost:3000/history");
+export const fetchHistory = createAsyncThunk("history/fetchHistory", (data) => {
+    const { gte, lte } = data;
+
+    return request(
+        `http://localhost:3000/history?date_gte=${gte}&date_lte=${lte}`
+    );
 });
 
 export const addHistory = createAsyncThunk("history/addHistory", (body) => {

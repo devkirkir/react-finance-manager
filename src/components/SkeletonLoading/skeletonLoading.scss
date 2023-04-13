@@ -67,7 +67,11 @@
 }
 
 .balance-skeleton {
-    height: 180px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background: linear-gradient(
         90deg,
         rgba(241, 243, 240, 1) 0%,
@@ -75,7 +79,7 @@
     );
     background-size: 400% 400%;
     border-radius: 3px;
-    margin-bottom: 20px;
+    margin: auto;
     animation: blinking 1s 0.1s infinite linear;
 }
 

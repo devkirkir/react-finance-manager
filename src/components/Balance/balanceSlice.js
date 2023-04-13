@@ -13,10 +13,19 @@ export const fetchBalance = createAsyncThunk("balance/fetchBalance", () => {
     return request("http://localhost:3000/balance");
 });
 
-export const changeCashBalance = createAsyncThunk("balance/addCash", (value) => {
-    const obj = { cash: value };
-    return request("http://localhost:3000/balance", "PATCH", { "Content-Type": "application/json" }, JSON.stringify(obj));
-});
+export const changeCashBalance = createAsyncThunk(
+    "balance/addCash",
+    (value) => {
+        const obj = { cash: value };
+
+        return request(
+            "http://localhost:3000/balance",
+            "PATCH",
+            { "Content-Type": "application/json" },
+            JSON.stringify(obj)
+        );
+    }
+);
 
 const balanceSlice = createSlice({
     name: "balance",
@@ -45,9 +54,6 @@ const balanceSlice = createSlice({
                 state.balanceLoading = "rejected";
             })
 
-            .addCase(changeCashBalance.pending, (state) => {
-                state.balanceLoading = "pending";
-            })
             .addCase(changeCashBalance.fulfilled, (state, action) => {
                 state.cash = action.payload.cash;
                 state.balanceLoading = "idle";
@@ -59,6 +65,7 @@ const balanceSlice = createSlice({
     },
 });
 
-export const { changeActiveType, setCardsBalance, subtractCardBalance } = balanceSlice.actions;
+export const { changeActiveType, setCardsBalance, subtractCardBalance } =
+    balanceSlice.actions;
 
 export default balanceSlice.reducer;

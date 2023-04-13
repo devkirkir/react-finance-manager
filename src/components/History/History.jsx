@@ -3,6 +3,8 @@ import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHistory, historySelectors } from "./historySlice";
 
+import useDate from "../../hooks/useDate";
+
 import HistoryItem from "../HistoryItem/HistoryItem";
 import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
 import HistoryNavigation from "../HistoryNavigation/HistoryNavigation";
@@ -14,8 +16,10 @@ function History() {
     const getAllHistory = useSelector(historySelectors.selectAll);
     const isLoading = useSelector((state) => state.history.isLoading);
 
+    const date = useDate();
+
     useEffect(() => {
-        dispatch(fetchHistory());
+        dispatch(fetchHistory({ gte: date.dateGte, lte: date.dateLte }));
     }, []);
 
     const sortByField = (field) => {

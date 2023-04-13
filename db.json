@@ -1,104 +1,56 @@
 {
   "balance": {
-    "cash": 404,
+    "cash": 0,
     "cards": 0
   },
   "cards": [
     {
       "id": "GpTPygEi_JJQC7uOOiAzc",
-      "value": "1222.2",
+      "value": "1100",
       "lastNumbers": "1212",
       "cardType": "visa"
     }
   ],
   "history": [
     {
-      "id": "mhxmsyRMkVk6ybUGG8vxn",
-      "title": "Title 1",
-      "category": "history category",
-      "date": "05.03.2023",
-      "value": "12",
+      "id": "kBRTE5sOOfqkXsFSeU--E",
+      "title": "q1",
+      "category": "category2",
+      "date": "4/13/2023",
+      "value": "100",
+      "type": "expense"
+    },
+    {
+      "id": "qFoNZda15Q69ogwyQskDC",
+      "title": "1wsa",
+      "category": "category1",
+      "date": "4/13/2023",
+      "value": "100",
+      "type": "expense"
+    },
+    {
+      "id": "-rhS1Q0dNuD585N51g-6f",
+      "title": "dcsa",
+      "category": "category2",
+      "date": "4/13/2023",
+      "value": "100.12",
       "type": "income"
     },
     {
-      "id": "1",
-      "title": "Title 2",
-      "category": "history category",
-      "date": "02.03.2023",
-      "value": "120",
+      "id": "IUtU6WDNWlxbtb_ZPVzLU",
+      "title": "1.122",
+      "category": "category2",
+      "date": "4/13/2023",
+      "value": "1",
       "type": "income"
     },
     {
-      "id": "2",
-      "title": "Title 3",
-      "category": "history category",
-      "date": "04.03.2023",
-      "value": "120",
-      "type": "income"
-    },
-    {
-      "id": "3",
-      "title": "Title 3",
-      "category": "history category",
-      "date": "05.03.2023",
-      "value": "120",
-      "type": "income"
-    },
-    {
-      "id": "4",
-      "title": "Title 4",
-      "category": "history category",
-      "date": "05.03.2023",
-      "value": "120",
-      "type": "income"
-    },
-    {
-      "id": "5",
-      "title": "Title 5",
-      "category": "history category",
-      "date": "10.03.2023",
-      "value": "120",
-      "type": "income"
-    },
-    {
-      "id": "fTvWsoohgwZObc2PWuRtq",
+      "id": "AbeSusf3quT6Sp6oa71M7",
       "title": "qw",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "12",
-      "type": "income"
-    },
-    {
-      "id": "2xhJAYqXwPMLT8NsAXdnu",
-      "title": "fsd",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "312",
-      "type": "income"
-    },
-    {
-      "id": "3yY6Uf5t1w48AJjY1thOD",
-      "title": "fsd",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "32",
-      "type": "income"
-    },
-    {
-      "id": "zCro8Fn6HpOOgtFmwTPQ1",
-      "title": "das",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "32",
-      "type": "income"
-    },
-    {
-      "id": "D51hUf1k1g38sdya6fCfZ",
-      "title": "fsd",
-      "category": "history category",
-      "date": "06.03.2023",
-      "value": "534",
-      "type": "income"
+      "category": "category2",
+      "date": "4/13/2023",
+      "value": "101.12",
+      "type": "expense"
     }
   ]
 }

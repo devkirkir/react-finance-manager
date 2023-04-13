@@ -37,7 +37,7 @@ function ModalIncomeExpense({ type, setModal }) {
             id: nanoid(),
             title,
             category: selectItem,
-            date: new Date().toLocaleDateString(),
+            date: new Date().toLocaleDateString("en-US"),
             value,
             type,
         };
@@ -84,6 +84,7 @@ function ModalIncomeExpense({ type, setModal }) {
         type === "income"
             ? {
                   required: "Input cannot be empty!",
+                  pattern: /^(\d*.{2}\d|\d*)$/,
                   min: {
                       value: 1,
                       message: "Min value 1",
@@ -91,6 +92,7 @@ function ModalIncomeExpense({ type, setModal }) {
               }
             : {
                   required: "Input cannot be empty!",
+                  pattern: /^(\d*.{2}\d|\d*)$/,
                   min: {
                       value: 1,
                       message: "Min value 1",
@@ -167,7 +169,8 @@ function ModalIncomeExpense({ type, setModal }) {
                                 ? "content-form__input content-form__input_invalid"
                                 : "content-form__input"
                         }
-                        type="number"
+                        type="text"
+                        inputMode="number"
                         placeholder="Amount"
                         {...register("incomeFormAmount", amountInputValid)}
                     />
