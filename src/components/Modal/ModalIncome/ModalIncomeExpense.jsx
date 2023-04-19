@@ -37,7 +37,7 @@ function ModalIncomeExpense({ type, setModal }) {
             id: nanoid(),
             title,
             category: selectItem,
-            date: new Date().toLocaleDateString("en-US"),
+            date: Date.now(),
             value,
             type,
         };

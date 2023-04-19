@@ -1,6 +1,6 @@
 {
   "balance": {
-    "cash": 10,
+    "cash": 200,
     "cards": 0
   },
   "cards": [
@@ -9,64 +9,38 @@
       "value": "1100",
       "lastNumbers": "1212",
       "cardType": "visa"
+    },
+    {
+      "id": "1YFxtiKbrtu-JZI8E0qU_",
+      "value": "1347",
+      "lastNumbers": "2281",
+      "cardType": "mastercard"
     }
   ],
   "history": [
     {
-      "id": "kBRTE5sOOfqkXsFSeU--E",
-      "title": "q1",
+      "id": "042S4KhV5m87xKMvQGPFF",
+      "title": "fdsfsd",
       "category": "category2",
-      "date": "4/13/2023",
-      "value": "100",
-      "type": "expense"
+      "date": 1681893080782,
+      "value": "140",
+      "type": "income"
     },
     {
-      "id": "qFoNZda15Q69ogwyQskDC",
-      "title": "1wsa",
+      "id": "nXA0A0ui5AG5buixC98EO",
+      "title": "qwd",
+      "category": "category3",
+      "date": 1681894173266,
+      "value": "10",
+      "type": "income"
+    },
+    {
+      "id": "KwJDCPbsorAdYv9QzLVUu",
+      "title": "qwq",
       "category": "category1",
-      "date": "4/13/2023",
-      "value": "100",
-      "type": "expense"
-    },
-    {
-      "id": "-rhS1Q0dNuD585N51g-6f",
-      "title": "dcsa",
-      "category": "category2",
-      "date": "4/13/2023",
-      "value": "100.12",
+      "date": 1681894195050,
+      "value": "40",
       "type": "income"
-    },
-    {
-      "id": "IUtU6WDNWlxbtb_ZPVzLU",
-      "title": "1.122",
-      "category": "category2",
-      "date": "4/13/2023",
-      "value": "1",
-      "type": "income"
-    },
-    {
-      "id": "AbeSusf3quT6Sp6oa71M7",
-      "title": "qw",
-      "category": "category2",
-      "date": "4/13/2023",
-      "value": "101.12",
-      "type": "expense"
-    },
-    {
-      "id": "BZV5IsXmmHBTQt6EJRZr3",
-      "title": "122",
-      "category": "category2",
-      "date": "4/13/2023",
-      "value": "12",
-      "type": "income"
-    },
-    {
-      "id": "wA6x54Mzlmc4Wx-gyJNGN",
-      "title": "Dollars expense",
-      "category": "category1",
-      "date": "4/13/2023",
-      "value": "2",
-      "type": "expense"
     }
   ]
 }

@@ -6,19 +6,39 @@ import {
 import useHttp from "../../hooks/useHttp";
 
 const historyAdapter = createEntityAdapter();
+
 const initialState = historyAdapter.getInitialState({
     isLoading: "pending",
+    nowYear: new Date().getFullYear(),
+    nowMonth: new Date().getMonth(),
+    currentYear: new Date().getFullYear(),
+    currentMonth: new Date().getMonth(),
 });
 
 const { request } = useHttp();
 
-export const fetchHistory = createAsyncThunk("history/fetchHistory", (data) => {
-    const { gte, lte } = data;
+export const fetchHistory = createAsyncThunk(
+    "history/fetchHistory",
+    (arg, { getState }) => {
+        const state = getState();
 
-    return request(
-        `http://localhost:3000/history?date_gte=${gte}&date_lte=${lte}`
-    );
-});
+        const dateGte = new Date(
+            state.history.currentYear,
+            state.history.currentMonth,
+            1
+        ).getTime();
+
+        const dateLte = new Date(
+            state.history.currentYear,
+            state.history.currentMonth + 1,
+            0
+        ).getTime();
+
+        return request(
+            `http://localhost:3000/history?date_gte=${dateGte}&date_lte=${dateLte}`
+        );
+    }
+);
 
 export const addHistory = createAsyncThunk("history/addHistory", (body) => {
     return request(
@@ -32,6 +52,20 @@ export const addHistory = createAsyncThunk("history/addHistory", (body) => {
 const historySlice = createSlice({
     name: "history",
     initialState,
+    reducers: {
+        prevMonth(state, action) {
+            state.currentMonth = action.payload;
+        },
+        prevYear(state) {
+            state.currentYear--;
+        },
+        nextMonth(state, action) {
+            state.currentMonth = action.payload;
+        },
+        nextYear(state) {
+            state.currentYear++;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchHistory.pending, (state) => {
@@ -59,5 +93,8 @@ const historySlice = createSlice({
 export const historySelectors = historyAdapter.getSelectors(
     (state) => state.history
 );
+
+export const { prevMonth, prevYear, nextMonth, nextYear } =
+    historySlice.actions;
 
 export default historySlice.reducer;

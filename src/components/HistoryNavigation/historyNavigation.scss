@@ -1,6 +1,119 @@
 .history-navigation {
     display: flex;
     justify-content: space-between;
-    &__btn {
+
+    .history-navigation-button {
+        display: flex;
+        align-items: center;
+        flex: 1;
+
+        background: transparent;
+        border: none;
+        cursor: pointer;
+
+        transition: 0.15s linear;
+
+        .history-navigation-button__content {
+            display: flex;
+            flex-direction: column;
+
+            .history-navigation-button__month {
+                font-size: 20px;
+                color: $text;
+            }
+
+            .history-navigation-button__year {
+                font-size: 14px;
+                color: $lightText;
+            }
+        }
+
+        &:first-child {
+            .history-navigation-button__content {
+                .history-navigation-button__year {
+                    align-self: start;
+                }
+            }
+
+            &::before {
+                content: "";
+                position: relative;
+                right: 0;
+
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+
+                border-left: 1px solid $lightText;
+                border-bottom: 1px solid $lightText;
+
+                margin-right: 4px;
+
+                transform: rotate(45deg);
+
+                transition: 0.15s linear;
+            }
+        }
+
+        &:last-child {
+            display: flex;
+            justify-content: flex-end;
+            .history-navigation-button__content {
+                .history-navigation-button__year {
+                    align-self: end;
+                }
+            }
+
+            &::after {
+                content: "";
+                position: relative;
+                left: 0;
+
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+
+                border-right: 1px solid $lightText;
+                border-top: 1px solid $lightText;
+
+                margin-left: 4px;
+
+                transform: rotate(45deg);
+
+                transition: 0.15s linear;
+            }
+        }
+
+        &:hover {
+            &::before {
+                right: 2px;
+                border-color: $text;
+            }
+
+            &::after {
+                left: 2px;
+                border-color: $text;
+            }
+        }
+    }
+
+    .history-navigation-current {
+        flex: 1;
+
+        &__month {
+            display: block;
+
+            font-size: 20px;
+            color: $text;
+            text-align: center;
+        }
+
+        &__year {
+            display: block;
+
+            font-size: 14px;
+            color: $lightText;
+            text-align: center;
+        }
     }
 }

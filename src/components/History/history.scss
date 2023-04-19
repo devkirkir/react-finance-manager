@@ -52,7 +52,11 @@
             margin-bottom: 30px;
         }
 
-        &__footer {
+        .history__not-found {
+            font-size: 22px;
+            font-weight: 700;
+            color: $bgActive;
+            text-align: center;
         }
     }
 }

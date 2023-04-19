@@ -10,6 +10,8 @@ function HistoryItem({ title, category, date, value, type, indexDelay }) {
             ? "history-wrapper-item__value history-wrapper-item__value_expense"
             : "history-wrapper-item__value history-wrapper-item__value_income";
 
+    const convertDate = new Date(date).toLocaleDateString("en-US");
+
     return (
         <motion.li
             initial={{ opacity: 0, translateY: -5 }}
@@ -19,7 +21,7 @@ function HistoryItem({ title, category, date, value, type, indexDelay }) {
         >
             <span className="history-wrapper-item__title">{title}</span>
             <span className="history-wrapper-item__category">{category}</span>
-            <span className="history-wrapper-item__date">{date}</span>
+            <span className="history-wrapper-item__date">{convertDate}</span>
             <span className={valueClassNames}>
                 {type === "expense" ? `-${value}$` : `+${value}$`}
             </span>
@@ -30,7 +32,7 @@ function HistoryItem({ title, category, date, value, type, indexDelay }) {
 HistoryItem.propTypes = {
     title: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    date: PropTypes.number.isRequired,
     value: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
 };
