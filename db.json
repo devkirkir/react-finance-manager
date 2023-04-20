@@ -1,6 +1,6 @@
 {
   "balance": {
-    "cash": 200,
+    "cash": 500,
     "cards": 0
   },
   "cards": [
@@ -9,18 +9,12 @@
       "value": "1100",
       "lastNumbers": "1212",
       "cardType": "visa"
-    },
-    {
-      "id": "1YFxtiKbrtu-JZI8E0qU_",
-      "value": "1347",
-      "lastNumbers": "2281",
-      "cardType": "mastercard"
     }
   ],
   "history": [
     {
       "id": "042S4KhV5m87xKMvQGPFF",
-      "title": "fdsfsd",
+      "title": "1",
       "category": "category2",
       "date": 1681893080782,
       "value": "140",
@@ -28,7 +22,7 @@
     },
     {
       "id": "nXA0A0ui5AG5buixC98EO",
-      "title": "qwd",
+      "title": "2",
       "category": "category3",
       "date": 1681894173266,
       "value": "10",
@@ -36,11 +30,155 @@
     },
     {
       "id": "KwJDCPbsorAdYv9QzLVUu",
-      "title": "qwq",
+      "title": "3",
       "category": "category1",
       "date": 1681894195050,
       "value": "40",
       "type": "income"
+    },
+    {
+      "id": "c6pc3I4YJOikvDK9qDYai",
+      "title": "44",
+      "category": "category2",
+      "date": 1681951194942,
+      "value": "21",
+      "type": "income"
+    },
+    {
+      "id": "B30qz-azHgSrn-dPHFRg6",
+      "title": "55",
+      "category": "category2",
+      "date": 1681951201711,
+      "value": "34",
+      "type": "income"
+    },
+    {
+      "id": "ov5a5nwiVGy6YW0PWQjy4",
+      "title": "66",
+      "category": "category1",
+      "date": 1681951211093,
+      "value": "54",
+      "type": "income"
+    },
+    {
+      "id": "5YbMH31hkwkUf3Cft-Ush",
+      "title": "77",
+      "category": "category2",
+      "date": 1681951216821,
+      "value": "5",
+      "type": "income"
+    },
+    {
+      "id": "e4rlvSmLbws-jyBdrDWMR",
+      "title": "88",
+      "category": "category2",
+      "date": 1681951223397,
+      "value": "12",
+      "type": "income"
+    },
+    {
+      "id": "48fy7HPKWTchnOoWatyaD",
+      "title": "99",
+      "category": "category2",
+      "date": 1681951228619,
+      "value": "2",
+      "type": "income"
+    },
+    {
+      "id": "gnzpj_x2vM8VmBy8kboag",
+      "title": "1010",
+      "category": "category2",
+      "date": 1681951468685,
+      "value": "21",
+      "type": "income"
+    },
+    {
+      "id": "ti7Qk1TJG2h8G9iVpwg59",
+      "title": "1111",
+      "category": "category2",
+      "date": 1681951485972,
+      "value": "43",
+      "type": "income"
+    },
+    {
+      "id": "F5EcKC2mUnpPHbJx8-kCH",
+      "title": "1212",
+      "category": "category2",
+      "date": 1681951493787,
+      "value": "32",
+      "type": "income"
+    },
+    {
+      "id": "266fk-1wgNIsl1ohwaXLJ",
+      "title": "1313",
+      "category": "category2",
+      "date": 1681951499643,
+      "value": "3",
+      "type": "income"
+    },
+    {
+      "id": "Be93_LyMt0AEGKLGSDX9s",
+      "title": "1414",
+      "category": "category3",
+      "date": 1681951530262,
+      "value": "12",
+      "type": "income"
+    },
+    {
+      "id": "wSJ-gqs-KRRBY8dn9VGOq",
+      "title": "1515",
+      "category": "category2",
+      "date": 1681951540597,
+      "value": "32",
+      "type": "income"
+    },
+    {
+      "id": "AKUdDLDZcCUulSx5HzFOq",
+      "title": "1616",
+      "category": "category2",
+      "date": 1681951623916,
+      "value": "21",
+      "type": "income"
+    },
+    {
+      "id": "m2ZYISGOevK2BCG3iLfUx",
+      "title": "1717",
+      "category": "category1",
+      "date": 1681951646907,
+      "value": "12",
+      "type": "income"
+    },
+    {
+      "id": "4Gh-GotqPOCET9X1aRgte",
+      "title": "fdsfsd",
+      "category": "category1",
+      "date": 1681953419211,
+      "value": "6",
+      "type": "income"
+    },
+    {
+      "id": "_qxV4RUQzfnfu4TliWUU9",
+      "title": "qw",
+      "category": "category2",
+      "date": 1681954605047,
+      "value": "32",
+      "type": "income"
+    },
+    {
+      "id": "oV2P6tBMD8NExIVs9tAq9",
+      "title": "21",
+      "category": "category2",
+      "date": 1681962093403,
+      "value": "32",
+      "type": "income"
+    },
+    {
+      "id": "WD31zFFuVnMRhl7MFwTzq",
+      "title": "ffe",
+      "category": "category2",
+      "date": 1681962533014,
+      "value": "74",
+      "type": "expense"
     }
   ]
 }

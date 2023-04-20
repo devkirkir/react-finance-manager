@@ -1,7 +1,7 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHistory, historySelectors } from "./historySlice";
+import { fetchHistory, historySelectors, loadMore } from "./historySlice";
 
 import HistoryItem from "../HistoryItem/HistoryItem";
 import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
@@ -13,6 +13,7 @@ function History() {
     const dispatch = useDispatch();
 
     const getAllHistory = useSelector(historySelectors.selectAll);
+    const selectTotalHistory = useSelector(historySelectors.selectTotal);
     const state = useSelector((state) => state.history);
     const isLoading = state.isLoading;
 
@@ -42,30 +43,37 @@ function History() {
     const renderHistory = useMemo(() => {
         return getAllHistory
             .sort(sortByField("date"))
-            .map((item, index) => (
-                <HistoryItem
-                    key={`history-${item.id}`}
-                    {...item}
-                    indexDelay={index}
-                />
+            .map((item) => (
+                <HistoryItem key={`history-${item.id}`} {...item} />
             ));
     });
 
-    const history =
-        getAllHistory.length !== 0 ? (
-            renderHistory
-        ) : (
-            <span className="history__not-found">Not found</span>
-        );
+    const prefTotalLength = useRef(selectTotalHistory);
 
-    const error = isLoading === "rejected" ? "error" : null;
+    const handleLoadMore = () => {
+        dispatch(loadMore());
+        dispatch(fetchHistory());
+        prefTotalLength.current = selectTotalHistory;
+    };
+
+    const history = getAllHistory.length ? (
+        renderHistory
+    ) : (
+        <span className="history-wrapper__label">Not found</span>
+    );
+
+    const error =
+        isLoading === "rejected" ? (
+            <span className="history-wrapper__label">Error</span>
+        ) : null;
 
     const loading =
         isLoading === "pending" ? (
             <SkeletonLoading type={"history"} count={6} />
         ) : null;
 
-    const content = isLoading === "idle" ? history : null;
+    console.log(prefTotalLength.current);
+    console.log("selectTotalHistory", selectTotalHistory);
 
     return (
         <div className="history">
@@ -85,9 +93,18 @@ function History() {
 
                 <ul className="history-wrapper__list">
                     {error}
+                    {history}
                     {loading}
-                    {content}
                 </ul>
+
+                {selectTotalHistory <= prefTotalLength.current && (
+                    <button
+                        className="history-wrapper__more"
+                        onClick={handleLoadMore}
+                    >
+                        More
+                    </button>
+                )}
 
                 <HistoryNavigation months={monthsList} {...state} />
             </div>

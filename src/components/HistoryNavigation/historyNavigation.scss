@@ -2,103 +2,110 @@
     display: flex;
     justify-content: space-between;
 
-    .history-navigation-button {
+    margin-top: 20px;
+
+    .button-container {
         display: flex;
         align-items: center;
         flex: 1;
 
-        background: transparent;
-        border: none;
-        cursor: pointer;
-
-        transition: 0.15s linear;
-
-        .history-navigation-button__content {
+        .button-container-button {
+            position: relative;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
 
-            .history-navigation-button__month {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+
+            transition: 0.15s linear;
+
+            .button-container-button__month {
                 font-size: 20px;
                 color: $text;
             }
 
-            .history-navigation-button__year {
+            .button-container-button__year {
                 font-size: 14px;
                 color: $lightText;
+            }
+
+            &:disabled {
+                opacity: 0.5;
+                pointer-events: none;
             }
         }
 
         &:first-child {
-            .history-navigation-button__content {
-                .history-navigation-button__year {
-                    align-self: start;
+            .button-container-button {
+                &::before {
+                    display: inline-block;
+
+                    content: "";
+
+                    position: absolute;
+                    left: 2px;
+
+                    width: 10px;
+                    height: 10px;
+
+                    align-self: flex-start;
+
+                    border-bottom: 1px solid $lightText;
+                    border-left: 1px solid $lightText;
+
+                    transform: rotate(45deg);
+
+                    transition: 0.15s linear;
                 }
-            }
 
-            &::before {
-                content: "";
-                position: relative;
-                right: 0;
-
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-
-                border-left: 1px solid $lightText;
-                border-bottom: 1px solid $lightText;
-
-                margin-right: 4px;
-
-                transform: rotate(45deg);
-
-                transition: 0.15s linear;
+                &:hover {
+                    &::before {
+                        left: -2px;
+                    }
+                }
             }
         }
 
         &:last-child {
-            display: flex;
-            justify-content: flex-end;
-            .history-navigation-button__content {
-                .history-navigation-button__year {
-                    align-self: end;
+            .button-container-button {
+                &::after {
+                    display: inline-block;
+
+                    content: "";
+
+                    position: absolute;
+                    right: 2px;
+
+                    width: 10px;
+                    height: 10px;
+
+                    align-self: flex-end;
+
+                    border-top: 1px solid $lightText;
+                    border-right: 1px solid $lightText;
+
+                    transform: rotate(45deg);
+
+                    transition: 0.15s linear;
                 }
-            }
 
-            &::after {
-                content: "";
-                position: relative;
-                left: 0;
-
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-
-                border-right: 1px solid $lightText;
-                border-top: 1px solid $lightText;
-
-                margin-left: 4px;
-
-                transform: rotate(45deg);
-
-                transition: 0.15s linear;
-            }
-        }
-
-        &:hover {
-            &::before {
-                right: 2px;
-                border-color: $text;
-            }
-
-            &::after {
-                left: 2px;
-                border-color: $text;
+                &:hover {
+                    &::after {
+                        right: -2px;
+                    }
+                }
             }
         }
     }
 
     .history-navigation-current {
         flex: 1;
+
+        cursor: default;
 
         &__month {
             display: block;

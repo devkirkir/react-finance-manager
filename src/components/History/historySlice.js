@@ -9,6 +9,9 @@ const historyAdapter = createEntityAdapter();
 
 const initialState = historyAdapter.getInitialState({
     isLoading: "pending",
+    historyLimit: 5,
+    offsetStart: 0,
+    offsetEnd: 5,
     nowYear: new Date().getFullYear(),
     nowMonth: new Date().getMonth(),
     currentYear: new Date().getFullYear(),
@@ -35,7 +38,7 @@ export const fetchHistory = createAsyncThunk(
         ).getTime();
 
         return request(
-            `http://localhost:3000/history?date_gte=${dateGte}&date_lte=${dateLte}`
+            `http://localhost:3000/history?_start=${state.history.offsetStart}&_end=${state.history.offsetEnd}&date_gte=${dateGte}&date_lte=${dateLte}&_sort=date&_order=desc`
         );
     }
 );
@@ -54,25 +57,43 @@ const historySlice = createSlice({
     initialState,
     reducers: {
         prevMonth(state, action) {
+            historyAdapter.removeAll(state);
+
+            state.offsetStart = 0;
+            state.offsetEnd = 5;
+
             state.currentMonth = action.payload;
+            state.isLoading = state.isLoading;
         },
         prevYear(state) {
             state.currentYear--;
         },
         nextMonth(state, action) {
+            historyAdapter.removeAll(state);
+
+            state.offsetStart = 0;
+            state.offsetEnd = 5;
+
             state.currentMonth = action.payload;
+            state.isLoading = state.isLoading;
         },
         nextYear(state) {
             state.currentYear++;
+        },
+        loadMore(state) {
+            state.offsetStart += 5;
+            state.offsetEnd += 5;
+
+            state.isLoading = "pending";
         },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchHistory.pending, (state) => {
-                state.isLoading = "pending";
+                state.isLoading = state.isLoading;
             })
             .addCase(fetchHistory.fulfilled, (state, action) => {
-                historyAdapter.setAll(state, action.payload);
+                historyAdapter.addMany(state, action.payload);
                 state.isLoading = "idle";
             })
             .addCase(fetchHistory.rejected, (state) => {
@@ -94,7 +115,7 @@ export const historySelectors = historyAdapter.getSelectors(
     (state) => state.history
 );
 
-export const { prevMonth, prevYear, nextMonth, nextYear } =
+export const { prevMonth, prevYear, nextMonth, nextYear, loadMore } =
     historySlice.actions;
 
 export default historySlice.reducer;

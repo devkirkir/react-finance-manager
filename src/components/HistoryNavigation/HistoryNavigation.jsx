@@ -52,23 +52,26 @@ function HistoryNavigation({
 
     const nextYearLabel = currentMonth == 11 ? currentYear + 1 : currentYear;
 
+    const conditionNextButton =
+        new Date(currentYear, currentMonth + 1, 0).getTime() <
+        new Date().getTime();
+
     return (
         <div className="history-navigation">
-            {currentMonth < nowMonth && currentYear <= nowYear && (
+            <div className="history-navigation__button-container button-container">
                 <button
-                    className="history-navigation__button history-navigation-button"
+                    className="button-container__button button-container-button"
                     onClick={handleNext}
+                    disabled={!conditionNextButton}
                 >
-                    <div className="history-navigation-button__content">
-                        <span className="history-navigation-button__month">
-                            {nextMonthLabel}
-                        </span>
-                        <span className="history-navigation-button__year">
-                            {nextYearLabel}
-                        </span>
-                    </div>
+                    <span className="button-container-button__month">
+                        {nextMonthLabel}
+                    </span>
+                    <span className="button-container-button__year">
+                        {nextYearLabel}
+                    </span>
                 </button>
-            )}
+            </div>
 
             <div className="history-navigation__current history-navigation-current">
                 <span className="history-navigation-current__month">
@@ -80,19 +83,19 @@ function HistoryNavigation({
                 </span>
             </div>
 
-            <button
-                className="history-navigation__button history-navigation-button"
-                onClick={handlePrev}
-            >
-                <div className="history-navigation-button__content">
-                    <span className="history-navigation-button__month">
+            <div className="history-navigation__button-container button-container">
+                <button
+                    className="button-container__button button-container-button"
+                    onClick={handlePrev}
+                >
+                    <span className="button-container-button__month">
                         {prevMonthLabel}
                     </span>
-                    <span className="history-navigation-button__year">
+                    <span className="button-container-button__year">
                         {prevYearLabel}
                     </span>
-                </div>
-            </button>
+                </button>
+            </div>
         </div>
     );
 }

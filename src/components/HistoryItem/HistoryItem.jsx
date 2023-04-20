@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import "./historyItem.scss";
 
-function HistoryItem({ title, category, date, value, type, indexDelay }) {
+function HistoryItem({ title, category, date, value, type }) {
     const valueClassNames =
         type === "expense"
             ? "history-wrapper-item__value history-wrapper-item__value_expense"
@@ -16,7 +16,7 @@ function HistoryItem({ title, category, date, value, type, indexDelay }) {
         <motion.li
             initial={{ opacity: 0, translateY: -5 }}
             animate={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.2, delay: indexDelay * 0.04 }}
+            transition={{ duration: 0.2, delay: 0.3 }}
             className="history-wrapper__item history-wrapper-item"
         >
             <span className="history-wrapper-item__title">{title}</span>
