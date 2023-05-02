@@ -68,10 +68,12 @@ function Cards() {
         );
 
     const error = isLoading === "rejected" ? "error" : null;
+
     const loading =
         isLoading === "pending" ? (
             <SkeletonLoading type={"cards"} count={2} />
         ) : null;
+
     const content = isLoading === "idle" ? cards : null;
 
     return (

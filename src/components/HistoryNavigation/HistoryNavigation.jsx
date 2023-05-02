@@ -9,13 +9,9 @@ import {
 
 import "./historyNavigation.scss";
 
-function HistoryNavigation({
-    months,
-    nowYear,
-    nowMonth,
-    currentYear,
-    currentMonth,
-}) {
+import { monthsList } from "../../constans/constans";
+
+function HistoryNavigation({ nowYear, nowMonth, currentYear, currentMonth }) {
     const dispatch = useDispatch();
 
     const handleNext = () => {
@@ -43,12 +39,12 @@ function HistoryNavigation({
     };
 
     const prevMonthLabel =
-        currentMonth == 0 ? months[11] : months[currentMonth - 1];
+        currentMonth == 0 ? monthsList[11] : monthsList[currentMonth - 1];
 
     const prevYearLabel = currentMonth == 0 ? currentYear - 1 : currentYear;
 
     const nextMonthLabel =
-        currentMonth == 11 ? months[0] : months[currentMonth + 1];
+        currentMonth == 11 ? monthsList[0] : monthsList[currentMonth + 1];
 
     const nextYearLabel = currentMonth == 11 ? currentYear + 1 : currentYear;
 
@@ -75,7 +71,7 @@ function HistoryNavigation({
 
             <div className="history-navigation__current history-navigation-current">
                 <span className="history-navigation-current__month">
-                    {months[currentMonth]}
+                    {monthsList[currentMonth]}
                 </span>
 
                 <span className="history-navigation-current__year">

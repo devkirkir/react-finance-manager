@@ -1,8 +1,8 @@
+import { types } from "../../constans/constans";
+
 import "./balanceToggles.scss";
 
 function BalanceToggles({ changeType, activeType }) {
-    const types = ["Total", "Cards", "Cash"];
-
     activeType =
         activeType[0].toUpperCase() + activeType.slice(1, 5).toLowerCase();
 

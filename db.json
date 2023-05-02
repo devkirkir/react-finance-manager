@@ -1,6 +1,6 @@
 {
   "balance": {
-    "cash": 500,
+    "cash": 600,
     "cards": 0
   },
   "cards": [
@@ -179,6 +179,14 @@
       "date": 1681962533014,
       "value": "74",
       "type": "expense"
+    },
+    {
+      "id": "JdsKjMB0mH2hnF-8IB1CP",
+      "title": "bro...",
+      "category": "category1",
+      "date": 1683003781402,
+      "value": "100",
+      "type": "income"
     }
   ]
 }

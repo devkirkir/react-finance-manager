@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHistory, historySelectors, loadMore } from "./historySlice";
@@ -7,38 +7,34 @@ import HistoryItem from "../HistoryItem/HistoryItem";
 import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
 import HistoryNavigation from "../HistoryNavigation/HistoryNavigation";
 
+import sortByField from "../../utils/sortByField";
+
 import "./history.scss";
 
 function History() {
     const dispatch = useDispatch();
 
+    const [isButtonVisible, setButtonVisible] = useState(true);
+
     const getAllHistory = useSelector(historySelectors.selectAll);
     const selectTotalHistory = useSelector(historySelectors.selectTotal);
     const state = useSelector((state) => state.history);
+
     const isLoading = state.isLoading;
 
-    const monthsList = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
+    const prevTotalHistory = useRef();
 
     useEffect(() => {
         dispatch(fetchHistory());
     }, []);
 
-    const sortByField = (field) => {
-        return (a, b) => (b[field] > a[field] ? 1 : -1);
-    };
+    useEffect(() => {
+        selectTotalHistory === 0
+            ? setButtonVisible(false)
+            : setButtonVisible(true);
+
+        prevTotalHistory.current = selectTotalHistory;
+    }, [selectTotalHistory]);
 
     const renderHistory = useMemo(() => {
         return getAllHistory
@@ -48,12 +44,12 @@ function History() {
             ));
     });
 
-    const prefTotalLength = useRef(selectTotalHistory);
-
     const handleLoadMore = () => {
         dispatch(loadMore());
         dispatch(fetchHistory());
-        prefTotalLength.current = selectTotalHistory;
+
+        if (prevTotalHistory.current === selectTotalHistory)
+            setButtonVisible(false);
     };
 
     const history = getAllHistory.length ? (
@@ -71,9 +67,6 @@ function History() {
         isLoading === "pending" ? (
             <SkeletonLoading type={"history"} count={6} />
         ) : null;
-
-    console.log(prefTotalLength.current);
-    console.log("selectTotalHistory", selectTotalHistory);
 
     return (
         <div className="history">
@@ -97,7 +90,7 @@ function History() {
                     {loading}
                 </ul>
 
-                {selectTotalHistory <= prefTotalLength.current && (
+                {isButtonVisible && (
                     <button
                         className="history-wrapper__more"
                         onClick={handleLoadMore}
@@ -106,7 +99,7 @@ function History() {
                     </button>
                 )}
 
-                <HistoryNavigation months={monthsList} {...state} />
+                <HistoryNavigation {...state} />
             </div>
         </div>
     );

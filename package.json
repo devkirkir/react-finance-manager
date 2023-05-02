@@ -1,7 +1,7 @@
 {
     "name": "finance-manager",
     "private": true,
-    "version": "0.9.0",
+    "version": "0.9.1",
     "type": "module",
     "scripts": {
         "dev": "concurrently \"vite\" \"json-server --watch db.json\"",

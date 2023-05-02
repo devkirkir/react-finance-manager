@@ -33,10 +33,12 @@ function Balance() {
     };
 
     const error = balance.balanceLoading === "rejected" ? "error" : null;
+
     const loading =
         balance.balanceLoading === "pending" ? (
             <SkeletonLoading type={"balance"} count={1} />
         ) : null;
+
     const content =
         balance.balanceLoading === "idle" ? (
             <View data={data} balance={balance} changeType={changeType} />
