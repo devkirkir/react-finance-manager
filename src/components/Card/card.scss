@@ -1,19 +1,29 @@
 .card {
     position: relative;
     height: 120px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    font-family: "Roboto", Arial, sans-serif;
     color: $text;
+
     background-color: $bg;
+
     padding: 20px 30px 15px;
     border-radius: 3px;
+
+    overflow: hidden;
+    box-sizing: border-box;
 
     &__type {
         position: absolute;
         top: 20px;
-        right: 30px;
+        right: 20px;
         width: 40px;
+
+        z-index: 0;
     }
 
     .value {
@@ -33,6 +43,8 @@
             color: $bgActive;
             font-size: 2.5rem;
         }
+
+        z-index: 1;
     }
 
     &__number {
@@ -44,9 +56,12 @@
         position: absolute;
         right: 30px;
         bottom: 15px;
-        opacity: 0;
+
         background: transparent;
+
         border: none;
+
+        opacity: 0;
         cursor: pointer;
         transition: opacity 0.2s linear;
 
@@ -64,6 +79,25 @@
     &:hover {
         .card__remove {
             opacity: 1;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        min-width: 260px;
+        flex: 1;
+
+        .value {
+            &__int {
+                font-size: clamp(2rem, 8vw, 2.5rem);
+            }
+
+            &__float {
+                font-size: clamp(2rem, 8vw, 2.5rem);
+            }
+
+            margin-bottom: 8px;
         }
     }
 }

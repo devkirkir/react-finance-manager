@@ -9,15 +9,17 @@ import BalanceToggles from "../BalanceToggles/BalanceToggles";
 import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
 
 import "./balance.scss";
+import ControlButtons from "../ControlButtons/ControlButtons";
 
 function Balance() {
+    const balance = useSelector((state) => state.balance);
+    const isLoading = balance.balanceLoading;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchBalance());
+        if (isLoading !== "idle") dispatch(fetchBalance());
     }, []);
-
-    const balance = useSelector((state) => state.balance);
 
     const changeType = (type) => {
         dispatch(changeActiveType(type.toLowerCase()));
@@ -32,15 +34,15 @@ function Balance() {
         total: useFormatNumber((balance.cards + balance.cash).toFixed(2)),
     };
 
-    const error = balance.balanceLoading === "rejected" ? "error" : null;
+    const error = isLoading === "rejected" ? "error" : null;
 
     const loading =
-        balance.balanceLoading === "pending" ? (
+        isLoading === "pending" ? (
             <SkeletonLoading type={"balance"} count={1} />
         ) : null;
 
     const content =
-        balance.balanceLoading === "idle" ? (
+        isLoading === "idle" ? (
             <View data={data} balance={balance} changeType={changeType} />
         ) : null;
 
@@ -52,6 +54,8 @@ function Balance() {
                 {loading}
                 {content}
             </div>
+
+            <ControlButtons />
         </div>
     );
 }

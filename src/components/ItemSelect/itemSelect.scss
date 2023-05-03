@@ -1,32 +1,43 @@
 .item-select {
     position: relative;
+
     margin-bottom: 8px;
+    box-sizing: border-box;
 
     .item-select-selected {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        font-family: "Roboto", Arial, sans-serif;
+        color: $text;
+
         border: 1px solid $bgHover;
         border-radius: 3px;
+
         padding: 15px;
+
         cursor: pointer;
         transition: background 0.3s linear;
 
         &__arrow {
             width: 10px;
             height: 10px;
+
             transform: rotate(45deg);
             transition: transform 0.1s linear;
 
             &--up {
                 border-top: 2px solid $lightText;
                 border-left: 2px solid $lightText;
+
                 margin-top: 5px;
             }
 
             &--down {
                 border-bottom: 2px solid $lightText;
                 border-right: 2px solid $lightText;
+
                 margin-top: -5px;
             }
         }
@@ -36,20 +47,33 @@
         position: absolute;
         width: 100%;
         height: 100%;
+
         background-color: #fff;
+
         z-index: 2;
+        box-sizing: border-box;
 
         .item-select-dropdown__list {
             background-color: #fff;
 
             border-radius: 3px;
 
+            padding: 0;
+            margin: 0;
+
             .item-select-dropdown-item {
                 display: flex;
                 justify-content: space-between;
-                border: 1px solid $bgHover;
-                padding: 15px;
+
+                font-family: "Roboto", Arial, sans-serif;
+
                 background-color: #fff;
+
+                border: 1px solid $bgHover;
+
+                padding: 15px;
+
+                box-sizing: border-box;
                 cursor: pointer;
 
                 &:hover {

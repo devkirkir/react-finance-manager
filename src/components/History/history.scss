@@ -3,18 +3,25 @@
 
     &__title {
         @include title;
-        margin-bottom: 30px;
     }
 
     .history-wrapper {
         min-height: 100%;
+
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
 
+        font-family: "Roboto", Arial, sans-serif;
+
+        margin-top: 30px;
+
         &__header {
             height: 100%;
             display: flex;
+
+            color: $text;
+
             margin-bottom: 10px;
 
             .history-wrapper__title,
@@ -46,13 +53,22 @@
         }
 
         &__list {
-            min-height: 400px;
+            min-height: 260px;
+
             display: flex;
             flex-direction: column;
+
+            padding: 0;
             margin-bottom: 30px;
+
+            box-sizing: border-box;
         }
 
         &__more {
+            font-family: "Roboto", Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+
             background-color: $bg;
 
             border: none;

@@ -26,7 +26,7 @@ function Cards() {
     const [isErrorModalOpen, setErrorModalOpen] = useState(false);
 
     useEffect(() => {
-        dispatch(fetchCards());
+        if (isLoading !== "idle") dispatch(fetchCards());
     }, []);
 
     useEffect(() => {
@@ -67,11 +67,14 @@ function Cards() {
             <span className="empty">No cards</span>
         );
 
-    const error = isLoading === "rejected" ? "error" : null;
+    const error =
+        isLoading === "rejected" ? (
+            <span className="history-wrapper__label">Error</span>
+        ) : null;
 
     const loading =
         isLoading === "pending" ? (
-            <SkeletonLoading type={"cards"} count={2} />
+            <SkeletonLoading type={"cards"} count={3} />
         ) : null;
 
     const content = isLoading === "idle" ? cards : null;

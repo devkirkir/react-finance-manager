@@ -11,12 +11,20 @@ $red: #fc3030;
 $green: #75d36c;
 
 @mixin title {
+    font-family: "Roboto", Arial, sans-serif;
     font-size: 2rem;
+    color: $text;
+
+    margin: 0;
 }
 
 @mixin addBtn {
+    font-family: "Roboto", Arial, sans-serif;
+
     background: transparent;
+
     border: none;
+
     margin-bottom: -3px;
     cursor: pointer;
 
@@ -30,11 +38,16 @@ $green: #75d36c;
 }
 
 @mixin input {
+    font-family: "Roboto", Arial, sans-serif;
     font-size: 2rem;
     text-align: center;
+    color: $text;
+
     outline: none;
+
     border: 1px solid $bgHover;
     border-radius: 3px;
+
     padding: 6px 0;
     margin-bottom: 10px;
 }

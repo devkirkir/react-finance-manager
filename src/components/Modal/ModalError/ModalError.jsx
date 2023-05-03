@@ -4,11 +4,14 @@ function ModalError({ children, setErrorModalOpen }) {
     return (
         <>
             <span className="content">
-                <h5 className="content__error-message">{children}</h5>
+                <span className="content__error-message">{children}</span>
             </span>
 
             <div className="modal-btns">
-                <button className="modal-btns__btn" onClick={() => setErrorModalOpen(false)}>
+                <button
+                    className="modal-btns__btn"
+                    onClick={() => setErrorModalOpen(false)}
+                >
                     Got It
                 </button>
             </div>

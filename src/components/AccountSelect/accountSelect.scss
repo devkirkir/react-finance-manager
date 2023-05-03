@@ -1,11 +1,17 @@
 .account-select {
     position: relative;
+
     .account-select-selected {
         display: flex;
         justify-content: space-between;
+
+        font-family: "Roboto", Arial, sans-serif;
+
         border: 1px solid $bgHover;
         border-radius: 3px;
+
         padding: 15px;
+
         cursor: pointer;
         transition: background 0.3s linear;
 
@@ -22,12 +28,22 @@
         .account-select-dropdown__list {
             border-radius: 3px;
 
+            padding: 0;
+            margin: 0;
+
             .account-select-dropdown-item {
                 display: flex;
                 justify-content: space-between;
-                border: 1px solid $bgHover;
-                padding: 15px;
+
+                font-family: "Roboto", Arial, sans-serif;
+                color: $text;
+
                 background-color: #fff;
+
+                border: 1px solid $bgHover;
+
+                padding: 15px;
+
                 cursor: pointer;
 
                 &__value {

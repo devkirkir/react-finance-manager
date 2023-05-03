@@ -2,10 +2,10 @@
     .wrapper-header {
         display: flex;
         align-items: center;
-        margin-bottom: 30px;
 
         &__title {
             @include title;
+
             margin-right: 10px;
             cursor: default;
         }
@@ -20,8 +20,19 @@
         flex-direction: column;
         gap: 20px;
 
+        margin-top: 30px;
+
         .empty {
             text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cards-wrapper {
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
     }
 }

@@ -1,8 +1,10 @@
 .history-skeleton-item {
     display: flex;
     justify-content: space-between;
-    height: 20px;
     gap: 50px;
+
+    height: 20px;
+
     margin-bottom: 30px;
 
     &:first-child {
@@ -40,29 +42,36 @@
     .history-skeleton-item__date,
     .history-skeleton-item__value {
         height: 20px;
+
         background-color: $bg;
-        border-radius: 3px;
         background: linear-gradient(
             90deg,
             rgba(241, 243, 240, 1) 0%,
             rgba(224, 224, 224, 1) 100%
         );
         background-size: 400% 400%;
+
+        border-radius: 3px;
     }
 }
 
 .card-skeleton {
     height: 120px;
+
     display: flex;
     flex-direction: column;
+
     background: linear-gradient(
         90deg,
         rgba(241, 243, 240, 1) 0%,
         rgba(224, 224, 224, 1) 100%
     );
     background-size: 400% 400%;
+
     border-radius: 3px;
+
     margin-bottom: 20px;
+
     animation: blinking 1s 0.1s infinite linear;
 }
 
@@ -72,13 +81,16 @@
     right: 0;
     bottom: 0;
     left: 0;
+
     background: linear-gradient(
         90deg,
         rgba(241, 243, 240, 1) 0%,
         rgba(224, 224, 224, 1) 100%
     );
     background-size: 400% 400%;
+
     border-radius: 3px;
+
     margin: auto;
     animation: blinking 1s 0.1s infinite linear;
 }

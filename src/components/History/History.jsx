@@ -25,7 +25,7 @@ function History() {
     const prevTotalHistory = useRef();
 
     useEffect(() => {
-        dispatch(fetchHistory());
+        if (isLoading !== "idle") dispatch(fetchHistory());
     }, []);
 
     useEffect(() => {
