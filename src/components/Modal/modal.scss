@@ -20,7 +20,7 @@
 
         place-self: center;
 
-        width: 340px;
+        width: clamp(280px, 50vw, 340px);
         height: auto;
 
         background-color: #fff;

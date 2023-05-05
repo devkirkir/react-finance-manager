@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import useFormatNumber from "../../hooks/useFormatNumber";
+import formatNumber from "../../utils/formatNumber";
 
 import { motion } from "framer-motion";
 
@@ -10,7 +10,7 @@ import visa from "../../assets/visa.png";
 import mastercard from "../../assets/mastercard.png";
 
 function Card({ id, value, lastNumbers, cardType, removeCard, indexDelay }) {
-    const formattedValue = useFormatNumber((+value).toFixed(2));
+    const formattedValue = formatNumber((+value).toFixed(2));
     const logo = cardType === "visa" ? visa : mastercard;
 
     return (

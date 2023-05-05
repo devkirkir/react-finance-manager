@@ -1,6 +1,6 @@
 {
   "balance": {
-    "cash": 601,
+    "cash": 589,
     "cards": 0
   },
   "cards": [
@@ -17,10 +17,10 @@
       "cardType": "visa"
     },
     {
-      "id": "vv2m5hnOM1BYTun9HD6FE",
-      "value": "1000000",
-      "lastNumbers": "2222",
-      "cardType": "mastercard"
+      "id": "WxVyOpYD5z9MlkNd9s4Ja",
+      "value": "1222",
+      "lastNumbers": "1212",
+      "cardType": "visa"
     }
   ],
   "history": [
@@ -207,6 +207,14 @@
       "date": 1683076460400,
       "value": "10000",
       "type": "income"
+    },
+    {
+      "id": "gKtzO4hHkTXCUXtm0JkPM",
+      "title": "qwq",
+      "category": "category1",
+      "date": 1683260532837,
+      "value": "12",
+      "type": "expense"
     }
   ]
 }

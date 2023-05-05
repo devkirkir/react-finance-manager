@@ -1,4 +1,4 @@
-const useFormatNumber = (num) => {
+const formatNumber = (num) => {
     let newNumber = [];
 
     num.toString()
@@ -19,4 +19,4 @@ const useFormatNumber = (num) => {
     return { number, float };
 };
 
-export default useFormatNumber;
+export default formatNumber;

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import useHttp from "../../hooks/useHttp";
+import http from "../../utils/http";
 
 const initialState = {
     cash: 0,
@@ -7,7 +7,7 @@ const initialState = {
     activeType: "total",
 };
 
-const { request } = useHttp();
+const { request } = http();
 
 export const fetchBalance = createAsyncThunk("balance/fetchBalance", () => {
     return request("http://localhost:3000/balance");

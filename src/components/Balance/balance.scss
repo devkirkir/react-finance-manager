@@ -60,10 +60,10 @@
     .balance-wrapper {
         .balance-wrapper-balance {
             &__value {
-                font-size: clamp(2rem, 8vw, 2.5rem);
+                font-size: clamp(2.1rem, 8vw, 2.5rem);
 
                 .float {
-                    font-size: clamp(2rem, 8vw, 2.5rem);
+                    font-size: clamp(2.1rem, 8vw, 2.5rem);
                 }
             }
         }

@@ -3,7 +3,7 @@ import {
     createEntityAdapter,
     createSlice,
 } from "@reduxjs/toolkit";
-import useHttp from "../../hooks/useHttp";
+import http from "../../utils/http";
 
 const historyAdapter = createEntityAdapter();
 
@@ -18,7 +18,7 @@ const initialState = historyAdapter.getInitialState({
     currentMonth: new Date().getMonth(),
 });
 
-const { request } = useHttp();
+const { request } = http();
 
 export const fetchHistory = createAsyncThunk(
     "history/fetchHistory",

@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBalance, changeActiveType } from "./balanceSlice";
 
-import useFormatNumber from "../../hooks/useFormatNumber";
+import formatNumber from "../../utils/formatNumber";
 
 import BalanceToggles from "../BalanceToggles/BalanceToggles";
 import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
+import ControlButtons from "../ControlButtons/ControlButtons";
 
 import "./balance.scss";
-import ControlButtons from "../ControlButtons/ControlButtons";
 
 function Balance() {
     const balance = useSelector((state) => state.balance);
@@ -29,9 +29,9 @@ function Balance() {
         typeLabel:
             balance.activeType[0].toUpperCase() +
             balance.activeType.slice(1, 5).toLowerCase(),
-        cards: useFormatNumber(balance.cards.toFixed(2)),
-        cash: useFormatNumber(balance.cash.toFixed(2)),
-        total: useFormatNumber((balance.cards + balance.cash).toFixed(2)),
+        cards: formatNumber(balance.cards.toFixed(2)),
+        cash: formatNumber(balance.cash.toFixed(2)),
+        total: formatNumber((balance.cards + balance.cash).toFixed(2)),
     };
 
     const error = isLoading === "rejected" ? "error" : null;

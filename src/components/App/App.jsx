@@ -1,10 +1,13 @@
 import { useMediaQuery } from "react-responsive";
 
-import Balance from "../Balance/Balance";
-import Cards from "../Cards/Cards";
-import History from "../History/History";
+import { Route, Routes } from "react-router-dom";
+
+import DesktopMain from "../DesktopMain/DesktopMain";
+import MobileMain from "../MobileMain/MobileMain";
+import MobileNav from "../MobileNav/MobileNav";
 
 import "./App.scss";
+import History from "../History/History";
 
 function App() {
     const isDesktop = useMediaQuery({
@@ -18,20 +21,21 @@ function App() {
     return (
         <div className="App">
             {isDesktop && (
-                <>
-                    <div className="left-column">
-                        <Balance /> <Cards />
-                    </div>
-                    <div className="right-column">
-                        <History />
-                    </div>
-                </>
+                <Routes>
+                    <Route path="/" element={<DesktopMain />} />
+                    <Route path="*" element={<DesktopMain />} />
+                </Routes>
             )}
 
             {isMobile && (
                 <>
-                    <Balance />
-                    <Cards />
+                    <Routes>
+                        <Route path="/" element={<MobileMain />} />
+                        <Route path="/transactions" element={<History />} />
+                        <Route path="*" element={<MobileMain />} />
+                    </Routes>
+
+                    <MobileNav />
                 </>
             )}
         </div>

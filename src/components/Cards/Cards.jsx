@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCards, removeCard, cardSelectors } from "./cardsSlice.js";
 import { setCardsBalance, subtractCardBalance } from "../Balance/balanceSlice";
 
-import useHttp from "../../hooks/useHttp.js";
+import http from "../../utils/http.js";
 
 import Card from "../Card/Card";
 import Modal from "../Modal/Modal.jsx";
@@ -16,7 +16,7 @@ import "./cards.scss";
 
 function Cards() {
     const dispatch = useDispatch();
-    const { request } = useHttp();
+    const { request } = http();
 
     const getAllCards = useSelector(cardSelectors.selectAll);
     const isLoading = useSelector((state) => state.cards.cardsLoading);

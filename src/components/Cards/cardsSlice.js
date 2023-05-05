@@ -4,9 +4,9 @@ import {
     createSlice,
 } from "@reduxjs/toolkit";
 
-import useHttp from "../../hooks/useHttp";
+import http from "../../utils/http";
 
-const { request } = useHttp();
+const { request } = http();
 
 const cardsAdapter = createEntityAdapter();
 const initialState = cardsAdapter.getInitialState({
